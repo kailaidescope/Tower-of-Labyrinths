@@ -1,0 +1,2 @@
+A:\turanskik game programming\Maze-Game\Maze Project\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+A:\turanskik game programming\Maze-Game\Maze Project\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
