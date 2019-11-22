@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\MazeWallsGenerator.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>A:/turanskik game programming/Tower-of-Labyrinths/Maze Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
