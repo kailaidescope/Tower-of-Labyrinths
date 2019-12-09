@@ -7,14 +7,12 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject wall;
     Cell[,] cells;
     List<Wall> walls;
-    Stack<Cell> cStack;
 
 
     public void GenerateGrid(int h, int w)
     {
         cells = new Cell[h, w];
         walls = new List<Wall>();
-        cStack = new Stack<Cell>();
 
         for (int i = 0; i < h; i++)
         {
@@ -36,15 +34,15 @@ public class MazeGenerator : MonoBehaviour
                 }
                 if (i < h - 1)
                 {
-                    c[0] = cells[i + 1, j];
+                    c[1] = cells[i + 1, j];
                 }
                 if (j > 0)
                 {
-                    c[0] = cells[i, j - 1];
+                    c[2] = cells[i, j - 1];
                 }
                 if (j < w - 1)
                 {
-                    c[0] = cells[i, j + 1];
+                    c[3] = cells[i, j + 1];
                 }
 
                 cells[i, j].SetAround(c);
@@ -53,7 +51,7 @@ public class MazeGenerator : MonoBehaviour
 
         for (int i = 0; i < h; i++)
         {
-            for (int j = i % 2; j + 2 < w; j += 2)
+            for (int j = i%2; j + 2 < w; j += 2)
             {
                 Cell[] c = cells[i, j].GetAround();
                 foreach (Cell v in c)
@@ -65,35 +63,32 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
         }
-
-        cStack.Push(cells[0, 0]);
     }
 
-    public void CarveGrid()
-    { 
-        if(cStack.Count > 0)
-        {
-            Cell currentCell = cStack.Pop();
+    public void CarveGrid(Cell currentCell)
+    {
+        List<Cell> clls = new List<Cell>(currentCell.GetAround());
+        Shuffle(clls);
 
-            foreach (Cell c in currentCell.GetAround())
+        foreach(Cell c in clls)
+        {
+            if(c != null && !c.GetVisited())
             {
-                if (c != null && !c.GetVisited())
-                {
-                    RemoveWall(c, currentCell);
-                    c.SetVisited(true);
-                    cStack.Push(c);
-                    CarveGrid();
-                }
+                RemoveWall(c, currentCell);
+                c.SetVisited(true);
+                CarveGrid(c);
             }
         }
     }
 
     public void RemoveWall(Cell a, Cell b)
     {
+        Debug.Log("1");
         for(int i = 0; i < walls.Count; i++)
         {
-            if(new Cell[2] {a, b} == walls[i].GetCells() || new Cell[2] {b, a} == walls[i].GetCells())
+            if((a == walls[i].GetCells()[0] && b == walls[i].GetCells()[1]) || (a == walls[i].GetCells()[1] && b == walls[i].GetCells()[0]))
             {
+                Debug.Log("2");
                 walls[i].SetActive(false);
             }
         }
@@ -109,14 +104,40 @@ public class MazeGenerator : MonoBehaviour
                 float z = (w.GetCells()[0].GetPos()[1] + w.GetCells()[1].GetPos()[1]) / 2;
                 GameObject obj = Instantiate(wall);
                 obj.transform.position = new Vector3(x, 0.5f, z);
+                if(w.GetCells()[0].GetPos()[1] == w.GetCells()[1].GetPos()[1])
+                {
+                    obj.transform.eulerAngles = new Vector3(0, 180f, 0);
+                }
+                else
+                {
+                    
+                }
             }
+        }
+    }
+
+    public void Shuffle<Cell>(List<Cell> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = (int)Random.Range(0, n + 1);
+            Cell value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
     }
 
     void Start()
     {
         GenerateGrid(10, 10);
-        CarveGrid();
+        CarveGrid(cells[0,0]);
+        
+        foreach(Wall w in walls)
+        {
+            Debug.Log(w.GetActive());
+        }
 
         SpawnMaze();
     }
