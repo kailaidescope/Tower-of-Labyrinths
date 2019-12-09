@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -39.45, y: 174.49}
+  m_AnchoredPosition: {x: -39.450012, y: 174.49}
   m_SizeDelta: {x: -81.1, y: -351.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311268030
@@ -253,7 +253,7 @@ Canvas:
   m_GameObject: {fileID: 372166026}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1952842368}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
@@ -281,7 +281,7 @@ RectTransform:
   - {fileID: 673960732}
   - {fileID: 1338685802}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -434,6 +434,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1519838693}
+--- !u!1 &468594598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468594599}
+  m_Layer: 0
+  m_Name: BattleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468594599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468594598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.036269, y: -4.3685675, z: 8.113678}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673960731
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +594,7 @@ GameObject:
   - component: {fileID: 775528820}
   - component: {fileID: 775528819}
   m_Layer: 0
-  m_Name: Enemy Test (1)
+  m_Name: EnemySpot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,7 +607,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775528818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -971,7 +1001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466281729
 GameObject:
@@ -1007,7 +1037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 39.6, y: 32.654953}
+  m_AnchoredPosition: {x: 39.600006, y: 32.654953}
   m_SizeDelta: {x: -88.2, y: -355.0899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466281731
@@ -1169,6 +1199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43cb0c78647b1345a93a5fd6dcc0187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveCam: {fileID: 1623856562}
+  BattleCam: {fileID: 1952842368}
 --- !u!1 &1579688312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1623856561
 AudioListener:
   m_ObjectHideFlags: 0
