@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
+    [SerializeField] private Vector2 size;
     [SerializeField] private GameObject wall;
     Cell[,] cells;
     List<Wall> walls;
@@ -131,7 +132,7 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateGrid(10, 10);
+        GenerateGrid((int)size.x, (int)size.y);
         CarveGrid(cells[0,0]);
         
         foreach(Wall w in walls)
