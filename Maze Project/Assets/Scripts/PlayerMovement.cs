@@ -25,8 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        currentSpeed = Mathf.Sqrt(Mathf.Pow(directionX * baseSpeed, 2) + Mathf.Pow(directionZ * baseSpeed, 2));
-        Debug.Log(currentSpeed);
+        if(directionZ != 0f || directionX != 0f)
+        {
+            currentSpeed = Mathf.Sqrt(Mathf.Pow(baseSpeed, 2) / (Mathf.Pow(directionX, 2) + (Mathf.Pow(directionZ, 2))));
+        }
+        else
+        {
+            currentSpeed = 0f;
+        }
         rb.velocity = new Vector3(directionX * currentSpeed, 0f, directionZ * currentSpeed);
     }
 }

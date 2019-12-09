@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfb4d15a9c3f884cb8ed8b8b960aa86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 10}
+  size: {x: 20, y: 20}
   wall: {fileID: 5815119790934324543, guid: 6272b3bbf5f1da64ba88be8a8391ea63, type: 3}
   plane: {fileID: 14504737}
 --- !u!4 &1729010242
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a5bb0261b57004b9a079127ce67de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  baseSpeed: 3
 --- !u!54 &2110861221
 Rigidbody:
   m_ObjectHideFlags: 0
