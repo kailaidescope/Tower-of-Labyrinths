@@ -85,12 +85,10 @@ public class MazeGenerator : MonoBehaviour
 
     public void RemoveWall(Cell a, Cell b)
     {
-        Debug.Log("1");
         for(int i = 0; i < walls.Count; i++)
         {
             if((a == walls[i].GetCells()[0] && b == walls[i].GetCells()[1]) || (a == walls[i].GetCells()[1] && b == walls[i].GetCells()[0]))
             {
-                Debug.Log("2");
                 walls[i].SetActive(false);
             }
         }
@@ -121,6 +119,27 @@ public class MazeGenerator : MonoBehaviour
                 obj.transform.parent = par.transform;
             }
         }
+
+        for(int i = 0; i < size.x; i++)
+        {
+            GameObject obj = Instantiate(wall);
+            obj.transform.position = new Vector3(i + 0.5f, 0.5f, 0);
+            obj.transform.parent = par.transform;
+            GameObject obj2 = Instantiate(wall);
+            obj2.transform.position = new Vector3(i + 0.5f, 0.5f, size.y);
+            obj2.transform.parent = par.transform;
+        }
+        for (int i = 0; i < size.y; i++)
+        {
+            GameObject obj = Instantiate(wall);
+            obj.transform.position = new Vector3(0, 0.5f, i + 0.5f);
+            obj.transform.eulerAngles = new Vector3(0, 180f, 0);
+            obj.transform.parent = par.transform;
+            GameObject obj2 = Instantiate(wall);
+            obj2.transform.position = new Vector3(size.x, 0.5f, i + 0.5f);
+            obj2.transform.eulerAngles = new Vector3(0, 180f, 0);
+            obj2.transform.parent = par.transform;
+        }
     }
 
     public void Shuffle<Cell>(List<Cell> list)
@@ -140,11 +159,6 @@ public class MazeGenerator : MonoBehaviour
     {
         GenerateGrid((int)size.x, (int)size.y);
         CarveGrid(cells[0,0]);
-        
-        foreach(Wall w in walls)
-        {
-            Debug.Log(w.GetActive());
-        }
 
         plane.transform.localScale = new Vector3(size.x/10f, 1, size.y/10f);
         plane.transform.position = new Vector3(size.x / 2, 0, size.y / 2);
