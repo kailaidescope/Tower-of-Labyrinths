@@ -6,6 +6,7 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private Vector2 size;
     [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject plane;
     Cell[,] cells;
     List<Wall> walls;
 
@@ -97,6 +98,10 @@ public class MazeGenerator : MonoBehaviour
 
     public void SpawnMaze()
     {
+        Destroy(GameObject.Find("parent"));
+        GameObject par = new GameObject("parent");
+        par.transform.position = new Vector3(0f, 0f, 0f);
+
         foreach(Wall w in walls)
         {
             if (w.GetActive())
@@ -113,6 +118,7 @@ public class MazeGenerator : MonoBehaviour
                 {
                     
                 }
+                obj.transform.parent = par.transform;
             }
         }
     }
@@ -139,6 +145,9 @@ public class MazeGenerator : MonoBehaviour
         {
             Debug.Log(w.GetActive());
         }
+
+        plane.transform.localScale = new Vector3(size.x/10f, 1, size.y/10f);
+        plane.transform.position = new Vector3(size.x / 2, 0, size.y / 2);
 
         SpawnMaze();
     }
