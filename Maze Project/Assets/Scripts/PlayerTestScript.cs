@@ -6,12 +6,16 @@ public class PlayerTestScript : MonoBehaviour
 {
     Rigidbody rb3d;
     public Camera MoveCam, BattleCam;
+    public float attackerID = 100f;
+    public float charID = 000f;
+    public float[] attackID;
     // Start is called before the first frame update
     void Start()
     {
         rb3d = GetComponent<Rigidbody>();
         BattleCam.enabled = false; 
         MoveCam.enabled = true;
+        attackID = new float[4];
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class PlayerTestScript : MonoBehaviour
             SwitchCameras();
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            attackerID = other.gameObject.GetComponent<AIMovement>().enemyID;
             other.gameObject.GetComponent<AIMovement>().enabled = false;
             other.gameObject.transform.position = new Vector3(389.67f, 132.6f, -189.16f);
         }
