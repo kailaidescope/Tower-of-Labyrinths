@@ -54,7 +54,7 @@ public class MazeGenerator : MonoBehaviour
 
         for (int i = 0; i < h; i++)
         {
-            for (int j = i%2; j + 2 < w; j += 2)
+            for (int j = i%2; j < w; j += 2)
             {
                 Cell[] c = cells[i, j].GetAround();
                 foreach (Cell v in c)
@@ -127,7 +127,7 @@ public class MazeGenerator : MonoBehaviour
             obj.transform.position = new Vector3(i + 0.5f, 0.5f, 0);
             obj.transform.parent = par.transform;
             GameObject obj2 = Instantiate(wall);
-            obj2.transform.position = new Vector3(i + 0.5f, 0.5f, size.y - 1);
+            obj2.transform.position = new Vector3(i + 0.5f, 0.5f, size.y);
             obj2.transform.parent = par.transform;
         }
         for (int i = 0; i < size.y; i++)
@@ -143,7 +143,7 @@ public class MazeGenerator : MonoBehaviour
         }
         for (int i = 0; i < size.x + 1; i++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int j = 0; j < size.y + 1; j++)
             {
                 GameObject obj = Instantiate(corner);
                 obj.transform.position = new Vector3(i, 0.5f, j);
