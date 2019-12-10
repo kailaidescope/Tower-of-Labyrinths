@@ -6,6 +6,7 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private Vector2 size;
     [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject corner;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
     List<Wall> walls;
@@ -126,7 +127,7 @@ public class MazeGenerator : MonoBehaviour
             obj.transform.position = new Vector3(i + 0.5f, 0.5f, 0);
             obj.transform.parent = par.transform;
             GameObject obj2 = Instantiate(wall);
-            obj2.transform.position = new Vector3(i + 0.5f, 0.5f, size.y);
+            obj2.transform.position = new Vector3(i + 0.5f, 0.5f, size.y - 1);
             obj2.transform.parent = par.transform;
         }
         for (int i = 0; i < size.y; i++)
@@ -139,6 +140,15 @@ public class MazeGenerator : MonoBehaviour
             obj2.transform.position = new Vector3(size.x, 0.5f, i + 0.5f);
             obj2.transform.eulerAngles = new Vector3(0, 180f, 0);
             obj2.transform.parent = par.transform;
+        }
+        for (int i = 0; i < size.x + 1; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                GameObject obj = Instantiate(corner);
+                obj.transform.position = new Vector3(i, 0.5f, j);
+                obj.transform.parent = par.transform;
+            }
         }
     }
 
