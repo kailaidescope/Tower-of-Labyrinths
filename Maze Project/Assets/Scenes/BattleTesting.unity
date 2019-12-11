@@ -434,6 +434,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1519838693}
+  enemyAttackID:
+  - 3
+  - 4
+  - 0
+  - 0
   enemyID: 0
 --- !u!1 &468594598
 GameObject:
@@ -478,9 +483,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e080486c02c0d8a44b6905be21ce9925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1519838689}
   pScript: {fileID: 0}
   cID: 0
+  eID: 0
+  cAttID: []
+  eAttID: []
 --- !u!1 &673960731
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +857,7 @@ GameObject:
   - component: {fileID: 1338685804}
   - component: {fileID: 1338685803}
   m_Layer: 5
-  m_Name: Attack (1)
+  m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,6 +1228,12 @@ MonoBehaviour:
   BattleCam: {fileID: 1952842368}
   attackerID: 100
   charID: 0
+  attackID:
+  - 1
+  - 2
+  - 0
+  - 0
+  enemyMoves: []
 --- !u!1 &1579688312
 GameObject:
   m_ObjectHideFlags: 0

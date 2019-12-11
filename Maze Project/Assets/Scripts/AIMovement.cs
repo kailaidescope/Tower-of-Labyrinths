@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AIMovement : MonoBehaviour {       
     public Transform goal;
     NavMeshAgent agent;
+    public float[] enemyAttackID; 
     public float enemyID = 000f;
     void Start () {
         agent = GetComponent<NavMeshAgent>();
