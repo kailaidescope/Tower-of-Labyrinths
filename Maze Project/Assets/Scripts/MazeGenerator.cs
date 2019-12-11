@@ -150,6 +150,13 @@ public class MazeGenerator : MonoBehaviour
                 obj.transform.parent = par.transform;
             }
         }
+        foreach(Cell c in cells)
+        {
+            if (c.GetHasEnemy())
+            {
+
+            }
+        }
     }
 
     public void Shuffle<Cell>(List<Cell> list)
