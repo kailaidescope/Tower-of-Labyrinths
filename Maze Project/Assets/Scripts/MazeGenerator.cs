@@ -8,6 +8,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject corner;
     [SerializeField] private GameObject enemy;
+	[SerializeField] private GameObject exit;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
     List<Wall> walls;
