@@ -7,6 +7,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private Vector2 size;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject corner;
+    [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
     List<Wall> walls;
@@ -95,6 +96,18 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    public void RemoveRandomWall()
+    {
+        foreach(Wall w in walls)
+        {
+            float rand = Random.Range(0f, 1f);
+            if (rand < 0.01f)
+            {
+                w.SetActive(false);
+            }
+        }
+    }
+
     public void SpawnMaze()
     {
         Destroy(GameObject.Find("parent"));
@@ -154,7 +167,8 @@ public class MazeGenerator : MonoBehaviour
         {
             if (c.GetHasEnemy())
             {
-
+                GameObject obj = Instantiate(enemy);
+                obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
             }
         }
     }
@@ -176,6 +190,7 @@ public class MazeGenerator : MonoBehaviour
     {
         GenerateGrid((int)size.x, (int)size.y);
         CarveGrid(cells[0,0]);
+        RemoveRandomWall();
 
         plane.transform.localScale = new Vector3(size.x/10f, 1, size.y/10f);
         plane.transform.position = new Vector3(size.x / 2, 0, size.y / 2);

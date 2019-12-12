@@ -16,13 +16,13 @@ public class Cell
     {
         around = new Cell[4];
         visited = false;
-        enemyChance = 0.01;
+        enemyChance = 0.05f ;
         x = a;
         z = b;
 
-        float dist = Mathf.Sqrt(Mathf.Pow(a,2) + Mathf.Pow(b,2));
-        float rand = Random.Range(0, 1);
-        if(rand < dist * enemyChance)
+        //float dist = Mathf.Sqrt(Mathf.Pow(a,2) + Mathf.Pow(b,2));
+        float rand = Random.Range(0f, 1f);
+        if(rand < enemyChance)
         {
             hasEnemy = true;
         }
