@@ -5,24 +5,19 @@ using UnityEngine;
 public class ExitBehaviour : MonoBehaviour
 {
     //1245526462146146136136661664661636616366163616515615115146123562344
-	
-    private void OnCollisionEnter(Collision collision)
+    GameObject menu;
+
+    private void Start()
     {
-        if(collision.gameObject.tag == "Player")
+        menu = GameObject.FindGameObjectWithTag("Menu");
+        menu.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-			GameObject obj = GameObject.Find("Menu");
-			obj.SetActive(true);
+            menu.SetActive(true);
         }
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

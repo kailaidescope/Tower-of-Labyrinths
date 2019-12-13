@@ -111,8 +111,7 @@ public class MazeGenerator : MonoBehaviour
 
     public void SpawnMaze()
     {
-        Destroy(GameObject.Find("parent"));
-        GameObject par = new GameObject("parent");
+        GameObject par = new GameObject("walls");
         par.transform.position = new Vector3(0f, 0f, 0f);
 
         foreach(Wall w in walls)
@@ -164,14 +163,23 @@ public class MazeGenerator : MonoBehaviour
                 obj.transform.parent = par.transform;
             }
         }
-        foreach(Cell c in cells)
+
+        GameObject enemies = new GameObject("enemies");
+        enemies.transform.position = new Vector3(0f, 0f, 0f);
+
+        foreach (Cell c in cells)
         {
             if (c.GetHasEnemy())
             {
                 GameObject obj = Instantiate(enemy);
                 obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
+                obj.transform.parent = enemies.transform;
             }
         }
+
+        GameObject o = Instantiate(exit);
+        o.transform.position = new Vector3(size.x - 0.5f, 0.5f, size.y - 0.5f);
+        o.transform.parent = par.transform;
     }
 
     public void Shuffle<Cell>(List<Cell> list)
