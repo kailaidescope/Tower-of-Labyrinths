@@ -8,6 +8,9 @@ public class Cell
     bool hasEnemy;
     float enemyID;
     float enemyChance;
+    bool hasItem;
+    float itemChance;
+    Item item;
     bool visited;
     float x;
     float z;
@@ -17,6 +20,7 @@ public class Cell
         around = new Cell[4];
         visited = false;
         enemyChance = 0.05f ;
+        itemChance = 0.1f;
         x = a;
         z = b;
 
@@ -29,6 +33,16 @@ public class Cell
         else
         {
             hasEnemy = false;
+        }
+
+        rand = Random.Range(0f, 1f);
+        if (!hasEnemy && rand < itemChance)
+        {
+            hasItem = true;
+        }
+        else
+        {
+            hasItem = false;
         }
     }
 
@@ -72,5 +86,15 @@ public class Cell
     public bool GetHasEnemy()
     {
         return hasEnemy;
+    }
+
+    public bool GetHasItem()
+    {
+        return hasItem;
+    }
+
+    public Item GetItem()
+    {
+        return item;
     }
 }

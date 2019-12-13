@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Text timer;
+    [SerializeField] private UnityEngine.UI.Text coins;
 
     GameObject player;
 
@@ -16,11 +17,18 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateTime();
+        UpdateCoins();
     }
 
     public void UpdateTime()
     {
-        string time = player.GetComponent<PlayerMovement>().GetTimerTime().ToString();
+        string time = player.GetComponent<PlayerBehaviour>().GetTimerTime().ToString();
         timer.text = "Time: " + time.Substring(0, time.Length - 3);
+    }
+
+    public void UpdateCoins()
+    {
+        int c = player.GetComponent<PlayerBehaviour>().GetCoinNum();
+        coins.text = "Coins: " + c;
     }
 }

@@ -8,6 +8,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject corner;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject coin;
 	[SerializeField] private GameObject exit;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
@@ -167,6 +168,9 @@ public class MazeGenerator : MonoBehaviour
         GameObject enemies = new GameObject("enemies");
         enemies.transform.position = new Vector3(0f, 0f, 0f);
 
+        GameObject items = new GameObject("items");
+        enemies.transform.position = new Vector3(0f, 0f, 0f);
+
         foreach (Cell c in cells)
         {
             if (c.GetHasEnemy())
@@ -174,6 +178,12 @@ public class MazeGenerator : MonoBehaviour
                 GameObject obj = Instantiate(enemy);
                 obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
                 obj.transform.parent = enemies.transform;
+            }
+            if (c.GetHasItem())
+            {
+                GameObject obj = Instantiate(coin);
+                obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
+                obj.transform.parent = items.transform;
             }
         }
 

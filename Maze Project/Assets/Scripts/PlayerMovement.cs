@@ -8,14 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    public float time;
     float directionX;
     float directionZ;
     float currentSpeed;
 
     private void Start()
     {
-        time = 0f;
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -27,8 +25,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        time += Time.fixedDeltaTime;
-
         if(directionZ != 0f || directionX != 0f)
         {
             currentSpeed = Mathf.Sqrt(Mathf.Pow(baseSpeed, 2) / (Mathf.Pow(directionX, 2) + (Mathf.Pow(directionZ, 2))));
@@ -38,10 +34,5 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = 0f;
         }
         rb.velocity = new Vector3(directionX * currentSpeed, 0f, directionZ * currentSpeed);
-    }
-
-    public float GetTimerTime()
-    {
-        return time;
     }
 }
