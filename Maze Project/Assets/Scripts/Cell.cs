@@ -39,6 +39,16 @@ public class Cell
         if (!hasEnemy && rand < itemChance)
         {
             hasItem = true;
+            rand = Random.Range(0f, 1f);
+            if(rand < 0.5f)
+            {
+                item = new Item("Coin", 1);
+            }
+            else
+            {
+                item = new Item("Chest", 1);
+            }
+            
         }
         else
         {

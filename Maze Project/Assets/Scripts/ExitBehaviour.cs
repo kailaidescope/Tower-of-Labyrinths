@@ -9,7 +9,7 @@ public class ExitBehaviour : MonoBehaviour
 
     private void Start()
     {
-        menu = GameObject.FindGameObjectWithTag("Menu");
+        menu = GameObject.Find("Victory Text");
         menu.SetActive(false);
     }
 

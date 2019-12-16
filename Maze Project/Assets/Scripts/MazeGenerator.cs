@@ -9,6 +9,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject corner;
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject coin;
+    [SerializeField] private GameObject chest;
 	[SerializeField] private GameObject exit;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
@@ -181,8 +182,17 @@ public class MazeGenerator : MonoBehaviour
             }
             if (c.GetHasItem())
             {
-                GameObject obj = Instantiate(coin);
-                obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
+                GameObject obj = null;
+                if (c.GetItem().GetName() == "Coin")
+                {
+                    obj = Instantiate(coin);
+                    obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
+                }
+                else if (c.GetItem().GetName() == "Chest")
+                {
+                    obj = Instantiate(chest);
+                    obj.transform.position = new Vector3(c.GetPos()[0], 0.25f, c.GetPos()[1]);
+                }
                 obj.transform.parent = items.transform;
             }
         }
