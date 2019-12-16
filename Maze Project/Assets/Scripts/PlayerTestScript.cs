@@ -6,9 +6,18 @@ public class PlayerTestScript : MonoBehaviour
 {
     Rigidbody rb3d;
     public Camera MoveCam, BattleCam;
-    public float attackerID = 100f;
+    public float attackerID = 000f;
     public float charID = 000f;
+    public float mana;
+    public float hp;
+    public float element;
+    public float classType;
+    public float dodgeChance;
+    public float attackPower;
+    public float magicPower;
+    public float defense;
     public float[] attackID;
+    public float[] items;
     public float[] enemyMoves;
     // Start is called before the first frame update
     void Start()
