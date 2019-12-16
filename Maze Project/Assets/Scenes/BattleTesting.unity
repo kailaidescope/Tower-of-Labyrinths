@@ -1319,210 +1319,58 @@ MonoBehaviour:
   eID: 0
   cAttID: []
   eAttID: []
+  cItemsID: []
   attackNames:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - N/A
+  - Slash
+  - Parry
+  - Concentrate Defense
   attackType:
+  - 6
   - 0
-  - 1
+  - 5
   - 2
-  dmgOrHeal:
+  attackElement:
   - 0
   - 0
   - 0
   - 0
+  abilityMagnitude:
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 20
+  - 40
+  - 0.2
   manaCost:
   - 0
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 10
+  - 20
+  itemNames:
+  - N/A
+  - Health Potion
+  - Mana Potion
   characterNames:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  characterHealths:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  characterManas:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - Hero
+  - Galahad
+  characterHealth: 0
+  characterMana: 0
+  characterElement: 0
+  characterClass: 0
+  cdchance: 0
+  capower: 0
+  cmpower: 0
+  cdefense: 0
   enemyNames:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Dummy
+  - Fire Golem
   enemyHealths:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 50
   - 0
   enemyManas:
+  - 50
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  enemyClass:
+  - 1
   - 0
 --- !u!1 &517657057
 GameObject:
@@ -4920,7 +4768,20 @@ MonoBehaviour:
   BattleCam: {fileID: 1952842368}
   attackerID: 100
   charID: 0
+  mana: 100
+  hp: 100
+  element: 0
+  classType: 0
+  dodgeChance: 20
+  attackPower: 1
+  magicPower: 1
+  defense: 1
   attackID:
+  - 1
+  - 2
+  - 0
+  - 0
+  items:
   - 1
   - 2
   - 0

@@ -38,23 +38,32 @@ public class BattleManager : MonoBehaviour
     public float eID;
     public float[] cAttID;
     public float[] eAttID;
+    public float[] cItemsID;
 
     public string[] attackNames;
-    public float[] attackType;
-    public float[] dmgOrHeal;
+    public float[] attackType;//0,1,2,3,4,5,6
+                                //damage,heal,defBoost,atkBoost,magBoost, shield,None
+    public float[] attackElement; //0,1,2,3,4,5,6
+                                    //normal, fire, water, air, earth, light, shadow
+    //classes //0,1,2
+                              //warrior, mage, rogue
+    public float[] abilityMagnitude; //scalarValue of attack
     public float[] manaCost;
 
-    public string[] characterNames;
-    public float[] characterHealths;
-    public float[] characterManas;
+    public string[] itemNames;
 
+    public string[] characterNames;
+    public float characterHealth;
+    public float characterMana;
+    public float characterElement;
+    public float characterClass;
+    public float cdchance, capower, cmpower, cdefense;
     public string[] enemyNames;
     public float[] enemyHealths;
     public float[] enemyManas;
+    public float[] enemyClass;
 
     private string characterName;
-    private float characterHealth;
-    private float characterMana;
 
     private string enemyName;
     private float enemyHealth;
@@ -66,9 +75,26 @@ public class BattleManager : MonoBehaviour
         pScript = player.GetComponent<PlayerTestScript>();
         cID = pScript.charID;
         cAttID = pScript.attackID;
+        cItemsID = pScript.items;
+        characterElement = pScript.element;
+        characterClass = pScript.classType;
+        cdchance = pScript.dodgeChance;
+        capower = pScript.attackPower;
+        cmpower = pScript.magicPower;
+        cdefense = pScript.defense;
         BattleMainMenu.gameObject.SetActive(true);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
+
+        a0.SetText(attackNames[(int)cAttID[0]]);
+        a1.SetText(attackNames[(int)cAttID[1]]);
+        a2.SetText(attackNames[(int)cAttID[2]]);
+        a3.SetText(attackNames[(int)cAttID[3]]);
+        
+        i0.SetText(itemNames[(int)cItemsID[0]]);
+        i1.SetText(itemNames[(int)cItemsID[1]]);
+        i2.SetText(itemNames[(int)cItemsID[2]]);
+        i3.SetText(itemNames[(int)cItemsID[3]]);
     }
 
     // Update is called once per frame
@@ -76,6 +102,9 @@ public class BattleManager : MonoBehaviour
     {
         eID = pScript.attackerID;
         eAttID = pScript.enemyMoves;
+        characterHealth = pScript.hp;
+        characterMana = pScript.mana;
+
     }
 
 
@@ -95,6 +124,9 @@ public class BattleManager : MonoBehaviour
         ItemSelection.gameObject.SetActive(false);
     }
 
+    void CommenceEnemyAttack(){
+        
+    }
 
     public void Attack0Click(){
         
