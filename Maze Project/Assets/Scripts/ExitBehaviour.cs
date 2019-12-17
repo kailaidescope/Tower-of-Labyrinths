@@ -17,6 +17,7 @@ public class ExitBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Time.timeScale = 0f;
             menu.SetActive(true);
         }
     }

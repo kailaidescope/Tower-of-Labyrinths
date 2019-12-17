@@ -11,6 +11,11 @@ public class Chest
         item = i;
     }
 
+    public Chest()
+    {
+        item = new Item("Coin", Random.Range(1,5));
+    }
+
     public Item GetItem()
     {
         return item;

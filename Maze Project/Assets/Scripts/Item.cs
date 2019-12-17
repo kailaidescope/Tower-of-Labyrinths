@@ -27,4 +27,16 @@ public class Item
     {
         return name;
     }
+
+    public string ToString()
+    {
+        if(count > 1)
+        {
+            return count + " " + name + "s";
+        }
+        else
+        {
+            return count + " " + name;
+        }
+    }
 }
