@@ -13,6 +13,9 @@ public class BattleManager : MonoBehaviour
     public Transform AttackSelection = null; 
     [SerializeField]
     public Transform ItemSelection = null; 
+    [SerializeField]
+    public Transform Response = null;
+
     
     public TextMeshProUGUI a0;
     public TextMeshProUGUI a1;
@@ -49,6 +52,7 @@ public class BattleManager : MonoBehaviour
                               //warrior, mage, rogue
     public float[] abilityMagnitude; //scalarValue of attack
     public float[] manaCost;
+    public float[] attackPriority;
 
     public string[] itemNames;
 
@@ -85,6 +89,7 @@ public class BattleManager : MonoBehaviour
         BattleMainMenu.gameObject.SetActive(true);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
+        Response.gameObject.SetActive(false);
 
         a0.SetText(attackNames[(int)cAttID[0]]);
         a1.SetText(attackNames[(int)cAttID[1]]);
@@ -112,24 +117,54 @@ public class BattleManager : MonoBehaviour
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(true);
         ItemSelection.gameObject.SetActive(false);
+        Response.gameObject.SetActive(false);
     }
     public void ItemSClick(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(true);
+        Response.gameObject.SetActive(false);
     }
     public void BackClick(){
         BattleMainMenu.gameObject.SetActive(true);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
+        Response.gameObject.SetActive(false);
+    }
+    public void dispResponse(){
+        BattleMainMenu.gameObject.SetActive(false);
+        AttackSelection.gameObject.SetActive(false);
+        ItemSelection.gameObject.SetActive(false);
+        Response.gameObject.SetActive(true);
     }
 
-    void CommenceEnemyAttack(){
-        
+    int ChooseEnemyID(){
+        int[] data = new int[4];
+        int choice = -1;
+        for(;;){
+            if(choice == -1 || eAttID[choice] == 0){
+                choice = Random.Range(0,4);
+            }
+            else{
+                break;
+            }
+        }
+        return choice;
     }
+    //enemy move choice
 
     public void Attack0Click(){
-        
+        int IDNUM = (int) cAttID[0];
+        int enemyChoice = ChooseEnemyID(); 
+        switch ((int)attackType[IDNUM]){
+            case 0:
+                if(attackPriority[IDNUM] >= attackPriority(enemyChoice)){
+                    
+                }
+                break;
+            default:
+                break;
+        }
     }
     public void Item0Click(){
 
