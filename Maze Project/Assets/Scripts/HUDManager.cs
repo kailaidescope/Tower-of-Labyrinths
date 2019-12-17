@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class HUDManager : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Text timer;
     [SerializeField] private UnityEngine.UI.Text coins;
