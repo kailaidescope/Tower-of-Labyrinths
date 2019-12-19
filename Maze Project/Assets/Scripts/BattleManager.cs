@@ -16,6 +16,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     public Transform Response = null;
 
+    public TextMeshProUGUI rPlayer;
+    public TextMeshProUGUI rEnemy;
     
     public TextMeshProUGUI a0;
     public TextMeshProUGUI a1;
@@ -77,9 +79,12 @@ public class BattleManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerTestScript>();
+
         cID = pScript.charID;
         cAttID = pScript.attackID;
         cItemsID = pScript.items;
+        characterHealth = pScript.hp;
+        characterMana = pScript.mana;
         characterElement = pScript.element;
         characterClass = pScript.classType;
         cdchance = pScript.dodgeChance;
@@ -91,6 +96,9 @@ public class BattleManager : MonoBehaviour
         ItemSelection.gameObject.SetActive(false);
         Response.gameObject.SetActive(false);
 
+        enemyHealth = enemyHealths[(int)eID];
+        enemyMana = enemyManas[(int)eID];
+
         a0.SetText(attackNames[(int)cAttID[0]]);
         a1.SetText(attackNames[(int)cAttID[1]]);
         a2.SetText(attackNames[(int)cAttID[2]]);
@@ -100,6 +108,9 @@ public class BattleManager : MonoBehaviour
         i1.SetText(itemNames[(int)cItemsID[1]]);
         i2.SetText(itemNames[(int)cItemsID[2]]);
         i3.SetText(itemNames[(int)cItemsID[3]]);
+
+        cName.SetText(characterNames[(int)cID]);
+        eName.SetText(enemyNames[(int)eID]);
     }
 
     // Update is called once per frame
@@ -110,6 +121,11 @@ public class BattleManager : MonoBehaviour
         characterHealth = pScript.hp;
         characterMana = pScript.mana;
 
+        cHP.SetText("Health: " + characterHealth);
+        cMP.SetText("Mana: " + characterMana);
+
+        eHP.SetText("Health: " + enemyHealth);
+        eMP.SetText("Mana: " + enemyMana);
     }
 
 
@@ -140,31 +156,41 @@ public class BattleManager : MonoBehaviour
 
     int ChooseEnemyID(){
         int[] data = new int[4];
-        int choice = -1;
+        int choice = Random.Range(0,4);
         for(;;){
-            if(choice == -1 || eAttID[choice] == 0){
+            if(eAttID[choice] == 0){
                 choice = Random.Range(0,4);
             }
             else{
                 break;
             }
         }
+        Debug.Log(choice);
         return choice;
     }
-    //enemy move choice
 
     public void Attack0Click(){
         int IDNUM = (int) cAttID[0];
-        int enemyChoice = ChooseEnemyID(); 
-        switch ((int)attackType[IDNUM]){
-            case 0:
-                if(attackPriority[IDNUM] >= attackPriority[enemyChoice]){
-                    
-                }
-                break;
-            default:
-                break;
+        int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
+        Debug.Log(enemyChoice);
+        float typeAdvantage = 1; //input formula later
+        if(attackPriority[IDNUM] >= attackPriority[enemyChoice]){
+            switch ((int)attackType[IDNUM]){
+                case 0:
+                    float dmg = abilityMagnitude[IDNUM] * typeAdvantage  * capower;
+                    enemyHealth -= dmg;
+                    rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID]);
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+
+        }
+
+        dispResponse();
     }
     public void Item0Click(){
 
