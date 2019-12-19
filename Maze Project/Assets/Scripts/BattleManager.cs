@@ -158,7 +158,7 @@ public class BattleManager : MonoBehaviour
         int enemyChoice = ChooseEnemyID(); 
         switch ((int)attackType[IDNUM]){
             case 0:
-                if(attackPriority[IDNUM] >= attackPriority(enemyChoice)){
+                if(attackPriority[IDNUM] >= attackPriority[enemyChoice]){
                     
                 }
                 break;
