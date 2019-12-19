@@ -136,6 +136,27 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
+        foreach(Cell c in cells)
+        {
+            int i = 0;
+
+            foreach(Wall w in walls)
+            {
+                if(w.GetCells()[0] == c || w.GetCells()[1] == c)
+                {
+                    if (w.GetActive())
+                    {
+                        i++;
+                    }
+                }
+            }
+
+            if(i == 3)
+            {
+                c.SetHasChest(true);
+            }
+        }
+
         for(int i = 0; i < size.x; i++)
         {
             GameObject obj = Instantiate(wall);
@@ -188,11 +209,12 @@ public class MazeGenerator : MonoBehaviour
                     obj = Instantiate(coin);
                     obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
                 }
-                else if (c.GetItem().GetName() == "Chest")
-                {
-                    obj = Instantiate(chest);
-                    obj.transform.position = new Vector3(c.GetPos()[0], 0.25f, c.GetPos()[1]);
-                }
+                obj.transform.parent = items.transform;
+            }
+            if (c.GetHasChest())
+            {
+                GameObject obj = Instantiate(chest);
+                obj.transform.position = new Vector3(c.GetPos()[0], 0.25f, c.GetPos()[1]);
                 obj.transform.parent = items.transform;
             }
         }

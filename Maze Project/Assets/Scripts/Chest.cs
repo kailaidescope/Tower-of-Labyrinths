@@ -13,7 +13,7 @@ public class Chest
 
     public Chest()
     {
-        item = new Item("Coin", Random.Range(1,5));
+        item = new Item("Coin", Random.Range(1,6));
     }
 
     public Item GetItem()

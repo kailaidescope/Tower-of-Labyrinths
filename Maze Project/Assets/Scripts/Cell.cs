@@ -11,6 +11,7 @@ public class Cell
     bool hasItem;
     float itemChance;
     Item item;
+    bool hasChest;
     bool visited;
     float x;
     float z;
@@ -19,6 +20,7 @@ public class Cell
     {
         around = new Cell[4];
         visited = false;
+        hasChest = false;
         enemyChance = 0.05f ;
         itemChance = 0.1f;
         x = a;
@@ -38,17 +40,8 @@ public class Cell
         rand = Random.Range(0f, 1f);
         if (!hasEnemy && rand < itemChance)
         {
-            hasItem = true;
-            rand = Random.Range(0f, 1f);
-            if(rand < 0.5f)
-            {
-                item = new Item("Coin", 1);
-            }
-            else
-            {
-                item = new Item("Chest", 1);
-            }
-            
+           hasItem = true;
+           item = new Item("Coin", 1);
         }
         else
         {
@@ -106,5 +99,16 @@ public class Cell
     public Item GetItem()
     {
         return item;
+    }
+
+    public void SetHasChest(bool b)
+    {
+        hasChest = b;
+        hasItem = !b;
+    }
+
+    public bool GetHasChest()
+    {
+        return hasChest;
     }
 }

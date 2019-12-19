@@ -11,6 +11,7 @@ public class ChestBehaviour : MonoBehaviour
     private void Awake()
     {
         chest = new Chest();
+        menu = null;
         menu = GameObject.Find("ChestPanel");
     }
 
