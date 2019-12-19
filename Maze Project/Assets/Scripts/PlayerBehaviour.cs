@@ -6,12 +6,12 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public float time;
 
-    List<Item> inventory = new List<Item>();
+    List<Item> items = new List<Item>();
 
     void Start()
     {
         time = 0f;
-        inventory.Add(new Item("Coin", 0));
+        items.Add(new Item("Coin", 0));
     }
 
     void FixedUpdate()
@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void AddItem(Item i)
     {
-        foreach(Item I in inventory)
+        foreach(Item I in items)
         {
             if(I.GetName() == i.GetName())
             {
@@ -35,12 +35,12 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        inventory.Add(i);
+        items.Add(i);
     }
 
     public int GetCoinNum()
     {
-        foreach(Item I in inventory)
+        foreach(Item I in items)
         {
             if(I.GetName() == "Coin")
             {
