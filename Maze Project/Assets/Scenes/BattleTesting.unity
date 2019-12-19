@@ -1410,7 +1410,7 @@ MonoBehaviour:
   goal: {fileID: 1519838693}
   enemyAttackID:
   - 1
-  - 4
+  - 2
   - 0
   - 0
   enemyID: 0
@@ -1621,6 +1621,8 @@ MonoBehaviour:
   AttackSelection: {fileID: 140058555}
   ItemSelection: {fileID: 2107507038}
   Response: {fileID: 986918551}
+  rPlayer: {fileID: 94635559}
+  rEnemy: {fileID: 266454332}
   a0: {fileID: 1448167664}
   a1: {fileID: 1169451968}
   a2: {fileID: 1277940457}
