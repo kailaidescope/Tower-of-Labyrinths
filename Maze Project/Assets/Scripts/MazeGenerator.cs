@@ -154,6 +154,8 @@ public class MazeGenerator : MonoBehaviour
             if(i == 3)
             {
                 c.SetHasChest(true);
+                c.SetHasEnemy(false);
+                c.SetHasItem(false);
             }
         }
 
