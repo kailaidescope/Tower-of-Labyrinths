@@ -5508,13 +5508,13 @@ MonoBehaviour:
   magicPower: 1
   defense: 1
   attackID:
-  - 1
   - 2
+  - 1
   - 0
   - 0
   items:
-  - 1
   - 2
+  - 1
   - 0
   - 0
   enemyMoves: []
