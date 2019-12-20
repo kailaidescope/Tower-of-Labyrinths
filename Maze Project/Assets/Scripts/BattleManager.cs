@@ -174,12 +174,44 @@ public class BattleManager : MonoBehaviour
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         float typeAdvantage = 1; //input formula later
+        float dmgDrop = 0;
         if(attackPriority[IDNUM] >= attackPriority[enemyChoice]){
             switch ((int)attackType[IDNUM]){
                 case 0:
-                    float dmg = abilityMagnitude[IDNUM] * typeAdvantage  * capower;
-                    enemyHealth -= dmg;
+                    float dmg = abilityMagnitude[IDNUM] * typeAdvantage  * capower - dmgDrop;
+                    if(dmg < 0) dmg = 0;
+                    enemyHealth -= dmg;     
+                    characterMana -= manaCost[IDNUM];
                     rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID]);
+                    break;
+                case 1:
+                    float hpgain = abilityMagnitude[IDNUM] * typeAdvantage * cmpower;
+                    characterHealth += hpgain;
+                    characterMana -= manaCost[IDNUM];
+                    rPlayer.SetText(characterNames[(int)cID] + " gained " + hpgain + " HP!");
+                    break;
+                case 2:
+                    float defMultiplier = 1 - (abilityMagnitude[IDNUM] * cmpower);
+                    cdefense *= defMultiplier;
+                    characterMana -= manaCost[IDNUM];
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!");
+                    break;
+                case 3:
+                    float atkMultiplier = 1 + (abilityMagnitude[IDNUM] * cmpower);
+                    capower *= atkMultiplier;
+                    characterMana -= manaCost[IDNUM];
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!");
+                    break;
+                case 4:
+                    float mMultiplier =  1 + (abilityMagnitude[IDNUM]);
+                    cmpower *= mMultiplier;
+                    characterMana -= manaCost[IDNUM];
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!");
+                    break;
+                case 5:
+                    dmgDrop = (abilityMagnitude[IDNUM] * capower);
+                    characterMana -= manaCost[IDNUM];
+                    rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!");
                     break;
                 default:
                     break;
