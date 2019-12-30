@@ -18,6 +18,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     public Transform Response = null;
     [SerializeField]
+    public Transform ErrorMSG = null;
+    [SerializeField]
     public Transform Outcome = null;
 
     public TextMeshProUGUI rPlayer;
@@ -104,6 +106,7 @@ public class BattleManager : MonoBehaviour
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
         Response.gameObject.SetActive(false);
+        ErrorMSG.gameObject.SetActive(false);
         Outcome.gameObject.SetActive(false);
         
         enemyHealth = enemyHealths[(int)eID];
@@ -149,24 +152,35 @@ public class BattleManager : MonoBehaviour
         AttackSelection.gameObject.SetActive(true);
         ItemSelection.gameObject.SetActive(false);
         Response.gameObject.SetActive(false);
+        ErrorMSG.gameObject.SetActive(false);
     }
     public void ItemSClick(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(true);
         Response.gameObject.SetActive(false);
+        ErrorMSG.gameObject.SetActive(false);
     }
     public void BackClick(){
         BattleMainMenu.gameObject.SetActive(true);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
         Response.gameObject.SetActive(false);
+        ErrorMSG.gameObject.SetActive(false);
     }
     public void dispResponse(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
         ItemSelection.gameObject.SetActive(false);
         Response.gameObject.SetActive(true);
+        ErrorMSG.gameObject.SetActive(false);
+    }
+    public void dispError(){
+        BattleMainMenu.gameObject.SetActive(false);
+        AttackSelection.gameObject.SetActive(false);
+        ItemSelection.gameObject.SetActive(false);
+        Response.gameObject.SetActive(false);
+        ErrorMSG.gameObject.SetActive(true);
     }
     public void OKBUTTON(){
         Outcome.gameObject.SetActive(false);
@@ -187,12 +201,22 @@ public class BattleManager : MonoBehaviour
     int ChooseEnemyID(){
         int[] data = new int[4];
         int choice = Random.Range(0,4);
-        for(;;){
-            if(eAttID[choice] == 0){
-                choice = Random.Range(0,4);
+        bool oom = true;
+        for(int i = 0; i < 4; i++){
+            if(!(manaCost[(int)eAttID[i]] > enemyMana)){
+                oom = false;
             }
-            else{
-                break;
+        }
+        if(oom){
+            choice = 4;
+        }else{
+            for(;;){
+                if(eAttID[choice] == 0 || manaCost[(int)eAttID[choice]] > enemyMana){
+                    choice = Random.Range(0,4);
+                }
+                else{
+                    break;
+                }
             }
         }
         Debug.Log(choice);
@@ -201,7 +225,7 @@ public class BattleManager : MonoBehaviour
     public void handleBattle(int IDNUM, int enemyChoice){
         float typeAdvantage = 1; //input formula later
         float dmgDrop = 0;
-        if(attackPriority[IDNUM] >= attackPriority[enemyChoice]){
+        if(attackPriority[IDNUM] <= attackPriority[enemyChoice]){
             switch ((int)attackType[IDNUM]){
                 case 0:
                     float dmg = edi * abilityMagnitude[IDNUM] * typeAdvantage  * capower - dmgDrop;
@@ -236,6 +260,7 @@ public class BattleManager : MonoBehaviour
                     break;
                 case 5:
                     dmgDrop = (abilityMagnitude[IDNUM] * capower);
+                    Debug.Log(dmgDrop);
                     characterMana -= manaCost[IDNUM];
                     rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!");
                     break;
@@ -244,6 +269,7 @@ public class BattleManager : MonoBehaviour
             }
             switch ((int)attackType[enemyChoice]){
                 case 0:
+                    Debug.Log(dmgDrop);
                     float dmg = cdefense * abilityMagnitude[enemyChoice] * typeAdvantage * eapi - dmgDrop;
                     if(dmg < 0) dmg = 0;
                     characterHealth -= dmg;     
@@ -280,6 +306,7 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
                     break;
                 default:
+                    rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
         }
@@ -323,6 +350,7 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
                     break;
                 default:
+                    rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
             switch ((int)attackType[IDNUM]){
@@ -383,6 +411,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Attack0Click(){
         int IDNUM = (int) cAttID[0];
+        if(manaCost[IDNUM] > characterMana){dispError();return;}
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -392,6 +421,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Attack1Click(){
         int IDNUM = (int) cAttID[1];
+        if(manaCost[IDNUM] > characterMana){dispError();return;}
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -401,6 +431,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Attack2Click(){
         int IDNUM = (int) cAttID[2];
+        if(manaCost[IDNUM] > characterMana){dispError();return;}
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -410,6 +441,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Attack3Click(){
         int IDNUM = (int) cAttID[3];
+        if(manaCost[IDNUM] > characterMana){dispError();return;}
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
