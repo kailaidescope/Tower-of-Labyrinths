@@ -161,7 +161,7 @@ public class MazeGenerator : MonoBehaviour
 
         foreach(Cell c in cells)
         {
-            if(c.GetPos()[0] == 0 && c.GetPos()[1] == 0)
+            if(c.GetPos()[0] == 0.5f && c.GetPos()[1] == 0.5f)
             {
                 c.SetHasChest(false);
                 c.SetHasEnemy(false);

@@ -7,32 +7,33 @@ public class MenuBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject inventoryPanel;
 
+    bool inventoryToggle;
     bool inventoryOpen;
 
     void Start()
     {
+        inventoryToggle = false;
         inventoryOpen = false;
         inventoryPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            inventoryOpen = !inventoryOpen;
-        }
-    }
+        //Inputs
+        inventoryToggle = Input.GetKeyDown(KeyCode.Escape);
 
-    private void FixedUpdate()
-    {
-        if (inventoryOpen)
+
+        //Outputs
+        if (!inventoryOpen && inventoryToggle)
         {
             Time.timeScale = 0f;
+            inventoryOpen = true;
             inventoryPanel.SetActive(true);
         }
-        else
+        else if(inventoryOpen && inventoryToggle)
         {
             Time.timeScale = 1f;
+            inventoryOpen = false;
             inventoryPanel.SetActive(false);
         }
     }
