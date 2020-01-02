@@ -35,6 +35,7 @@ public class PlayerTestScript : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Enemy"){
             Debug.Log("Enter Battle");
+            Time.timeScale = 0f;
             SwitchCameras();
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             other.gameObject.GetComponent<NavMeshAgent>().enabled = false;

@@ -188,6 +188,7 @@ public class BattleManager : MonoBehaviour
     }
     public void OKBUTTON(){
         Outcome.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void EndBattlePlayer(){
         Outcome.gameObject.SetActive(true);
