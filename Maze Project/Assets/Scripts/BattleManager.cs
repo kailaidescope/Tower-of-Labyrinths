@@ -144,6 +144,10 @@ public class BattleManager : MonoBehaviour
         eHP.SetText("Health: " + enemyHealth);
         eMP.SetText("Mana: " + enemyMana);
 
+        i0.SetText(itemNames[(int)cItemsID[0]]);
+        i1.SetText(itemNames[(int)cItemsID[1]]);
+        i2.SetText(itemNames[(int)cItemsID[2]]);
+        i3.SetText(itemNames[(int)cItemsID[3]]);
     }
 
 
@@ -409,6 +413,120 @@ public class BattleManager : MonoBehaviour
             EndBattleEnemy();
         }
     }
+    public void handleITEMS(int IDNUM, int index){
+        switch(IDNUM){
+            case 1:
+                float hpgain1 = 40;
+                characterHealth += hpgain1;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " healed 40 HP!");
+                break;
+            case 2:
+                float managain1 = 40;
+                characterMana += managain1;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " generated 40 MP!");
+                break;
+            case 3:
+                float defMultiplier1 = .8f;
+                cdefense *= defMultiplier1;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!");
+                break;
+            case 4:
+                float atkMultiplier1 = 1.2f;
+                capower *= atkMultiplier1;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!");
+                break;
+            case 5:
+                float mMultiplier1 = 1.2f;
+                cmpower *= mMultiplier1;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!");
+                break;
+            case 6:
+                float hpgain2 = 100;
+                characterHealth += hpgain2;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " healed 100 HP!");
+                break;
+            case 7:
+                float managain2 = 100;
+                characterMana += managain2;
+                cItemsID[index] = 0;
+                rPlayer.SetText(characterNames[(int)cID] + " generated 100 MP!");
+                break;
+            default:
+                dispError();
+                return;
+                break;
+        }
+
+        int enemyChoice = (int)eAttID[ChooseEnemyID()];
+        
+        float typeAdvantage = 1; //input formula later
+        float dmgDrop = 0;
+        
+        switch ((int)attackType[enemyChoice]){
+            case 0:
+                float dmg = cdefense * abilityMagnitude[enemyChoice] * typeAdvantage * eapi - dmgDrop;
+                if(dmg < 0) dmg = 0;
+                characterHealth -= dmg;     
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
+                break;
+            case 1:
+                float hpgain = abilityMagnitude[enemyChoice] * typeAdvantage * empi;
+                enemyHealth += hpgain;
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
+                break;
+            case 2:
+                float defMultiplier = 1 - (abilityMagnitude[enemyChoice] * empi);
+                edi *= defMultiplier;
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!");
+                break;
+            case 3:
+                float atkMultiplier = 1 + (abilityMagnitude[enemyChoice] * empi);
+                eapi *= atkMultiplier;
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!");
+                break;
+            case 4:
+                float mMultiplier =  1 + (abilityMagnitude[enemyChoice]);
+                empi *= mMultiplier;
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!");
+                break;
+            case 5:
+                dmgDrop = (abilityMagnitude[enemyChoice] * eapi);
+                enemyMana -= manaCost[enemyChoice];
+                rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
+                break;
+            default:
+                rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
+                break;
+        }
+        
+        dispResponse();
+        
+        if(enemyHealth <= 0){
+            if(characterHealth<=0){
+                EndBattleEnemy();
+            }
+            else{
+                EndBattlePlayer();
+            } 
+        }
+        
+        if(characterHealth<=0){
+            EndBattleEnemy();
+        }
+
+    }
+
     public void Attack0Click(){
         int IDNUM = (int) cAttID[0];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
@@ -417,7 +535,8 @@ public class BattleManager : MonoBehaviour
         handleBattle(IDNUM, enemyChoice);
     }
     public void Item0Click(){
-        
+        int IDNUM = (int)cItemsID[0];
+        handleITEMS(IDNUM,0);
     }
     public void Attack1Click(){
         int IDNUM = (int) cAttID[1];
@@ -427,7 +546,8 @@ public class BattleManager : MonoBehaviour
         handleBattle(IDNUM, enemyChoice);
     }
     public void Item1Click(){
-
+        int IDNUM = (int)cItemsID[1];
+        handleITEMS(IDNUM,1);
     }
     public void Attack2Click(){
         int IDNUM = (int) cAttID[2];
@@ -437,7 +557,8 @@ public class BattleManager : MonoBehaviour
         handleBattle(IDNUM, enemyChoice);
     }
     public void Item2Click(){
-
+        int IDNUM = (int)cItemsID[2];
+        handleITEMS(IDNUM,2);
     }
     public void Attack3Click(){
         int IDNUM = (int) cAttID[3];
@@ -447,7 +568,8 @@ public class BattleManager : MonoBehaviour
         handleBattle(IDNUM, enemyChoice);
     }
     public void Item3Click(){
-
+        int IDNUM = (int)cItemsID[3];
+        handleITEMS(IDNUM,3);
     }
 
 
