@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Cell.cs" />
     <Compile Include="Assets\Scripts\Chest.cs" />
     <Compile Include="Assets\Scripts\ChestBehaviour.cs" />
+    <Compile Include="Assets\Scripts\ColliderDestroyer.cs" />
     <Compile Include="Assets\Scripts\ExitBehaviour.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\ItemBehaviour.cs" />

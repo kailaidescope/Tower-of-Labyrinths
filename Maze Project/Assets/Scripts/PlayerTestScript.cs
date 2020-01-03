@@ -43,6 +43,7 @@ public class PlayerTestScript : MonoBehaviour
             enemyMoves = other.gameObject.GetComponent<AIMovement>().enemyAttackID;
             other.gameObject.GetComponent<AIMovement>().enabled = false;
             other.gameObject.transform.position = new Vector3(389.67f, 132.6f, -189.16f);
+            GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>().NewBattle();
         }
     }
     public void SwitchCameras(){

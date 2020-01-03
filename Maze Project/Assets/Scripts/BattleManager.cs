@@ -9,6 +9,8 @@ public class BattleManager : MonoBehaviour
 {
     public Camera MoveCam, BattleCam;
 
+    public Transform prefab;
+
     [SerializeField]
     public Transform BattleMainMenu = null;    
     [SerializeField]
@@ -75,6 +77,7 @@ public class BattleManager : MonoBehaviour
     public string[] enemyNames;
     public float[] enemyHealths;
     public float[] enemyManas;
+    public float[] enemyElement;
     public float[] enemyClass;
     public float[] eapower, empower, edefense;
     public float eapi, empi, edi;
@@ -84,10 +87,14 @@ public class BattleManager : MonoBehaviour
     private string enemyName;
     private float enemyHealth;
     private float enemyMana;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        NewBattle();
+    }
+
+    public void NewBattle(){
         player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerTestScript>();
 
@@ -150,7 +157,6 @@ public class BattleManager : MonoBehaviour
         i3.SetText(itemNames[(int)cItemsID[3]]);
     }
 
-
     public void AttackSClick(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(true);
@@ -158,6 +164,7 @@ public class BattleManager : MonoBehaviour
         Response.gameObject.SetActive(false);
         ErrorMSG.gameObject.SetActive(false);
     }
+
     public void ItemSClick(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
@@ -165,6 +172,7 @@ public class BattleManager : MonoBehaviour
         Response.gameObject.SetActive(false);
         ErrorMSG.gameObject.SetActive(false);
     }
+
     public void BackClick(){
         BattleMainMenu.gameObject.SetActive(true);
         AttackSelection.gameObject.SetActive(false);
@@ -172,6 +180,7 @@ public class BattleManager : MonoBehaviour
         Response.gameObject.SetActive(false);
         ErrorMSG.gameObject.SetActive(false);
     }
+
     public void dispResponse(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
@@ -179,6 +188,7 @@ public class BattleManager : MonoBehaviour
         Response.gameObject.SetActive(true);
         ErrorMSG.gameObject.SetActive(false);
     }
+
     public void dispError(){
         BattleMainMenu.gameObject.SetActive(false);
         AttackSelection.gameObject.SetActive(false);
@@ -186,21 +196,27 @@ public class BattleManager : MonoBehaviour
         Response.gameObject.SetActive(false);
         ErrorMSG.gameObject.SetActive(true);
     }
+
     public void OKBUTTON(){
         Outcome.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
+
     public void EndBattlePlayer(){
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(characterNames[(int)cID] + " defeated " + enemyNames[(int)eID] + "!");
         BattleCam.enabled = !BattleCam.enabled;
         MoveCam.enabled = !MoveCam.enabled;
+        Instantiate(prefab, new Vector3(389.67f, 134.6f, -189.16f), Quaternion.identity);
     }
+
     public void EndBattleEnemy(){
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(enemyNames[(int)eID] + " defeated " + characterNames[(int)cID] + "!");
         BattleCam.enabled = !BattleCam.enabled;
         MoveCam.enabled = !MoveCam.enabled;
+        Instantiate(prefab, new Vector3(389.67f, 134.6f, -189.16f), Quaternion.identity);
+        Instantiate(prefab, new Vector3(385.63f, 134.6f, -195.38f), Quaternion.identity);
     }
 
     int ChooseEnemyID(){
@@ -227,6 +243,26 @@ public class BattleManager : MonoBehaviour
         Debug.Log(choice);
         return choice;
     }
+    
+    public int advantageCalculator(){
+        float typeAdvantage = 1;
+        float[][] classAdvantages = new float[3][3] {{1,2,.5},
+                                        {.5,1,2},
+                                        {2,.5,1}};
+        //class advantage
+        typeAdvantage *= classAdvantages[(int)characterClass][(int)enemyClass[(int)eID]];
+
+        float[][] elementAdvantages = new float[7][7] {{1,1,.75,.5,.5,.25,.25},
+                                        {1.5,.5,.5,3,.75,1,1.5},
+                                        {1.25,3,.5,.25,1,1,1},
+                                        {1,.25,2,.5,2,.5,1},
+                                        {1,1.5,.5,.75,1,1.5,.5},
+                                        {2,1,2,1,2,.5,2},
+                                        {2,2,1,2,1,2,.5}};
+        //element advantage
+        typeAdvantage *= elementAdvantages[(int)characterElement][(int)enemyElement[(int)eID]];
+    }
+
     public void handleBattle(int IDNUM, int enemyChoice){
         float typeAdvantage = 1; //input formula later
         float dmgDrop = 0;
@@ -414,6 +450,7 @@ public class BattleManager : MonoBehaviour
             EndBattleEnemy();
         }
     }
+   
     public void handleITEMS(int IDNUM, int index){
         switch(IDNUM){
             case 1:
@@ -535,10 +572,12 @@ public class BattleManager : MonoBehaviour
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
     }
+    
     public void Item0Click(){
         int IDNUM = (int)cItemsID[0];
         handleITEMS(IDNUM,0);
     }
+   
     public void Attack1Click(){
         int IDNUM = (int) cAttID[1];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
@@ -546,10 +585,12 @@ public class BattleManager : MonoBehaviour
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
     }
+ 
     public void Item1Click(){
         int IDNUM = (int)cItemsID[1];
         handleITEMS(IDNUM,1);
     }
+    
     public void Attack2Click(){
         int IDNUM = (int) cAttID[2];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
@@ -557,10 +598,12 @@ public class BattleManager : MonoBehaviour
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
     }
+ 
     public void Item2Click(){
         int IDNUM = (int)cItemsID[2];
         handleITEMS(IDNUM,2);
     }
+ 
     public void Attack3Click(){
         int IDNUM = (int) cAttID[3];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
@@ -568,11 +611,9 @@ public class BattleManager : MonoBehaviour
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
     }
+  
     public void Item3Click(){
         int IDNUM = (int)cItemsID[3];
         handleITEMS(IDNUM,3);
     }
-
-
-
 }

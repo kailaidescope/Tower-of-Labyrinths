@@ -991,7 +991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -58.820297, y: 231.90039}
+  m_AnchoredPosition: {x: -58.820312, y: 231.90039}
   m_SizeDelta: {x: -119.85, y: -465.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311268030
@@ -2039,7 +2039,7 @@ GameObject:
   - component: {fileID: 468594600}
   m_Layer: 0
   m_Name: BattleManager
-  m_TagString: Untagged
+  m_TagString: BattleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2072,6 +2072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveCam: {fileID: 1623856562}
   BattleCam: {fileID: 1952842368}
+  prefab: {fileID: 2458794651194699562, guid: ee29200b40520cc4984909ceaafcd5f6, type: 3}
   BattleMainMenu: {fileID: 2029980069}
   AttackSelection: {fileID: 140058555}
   ItemSelection: {fileID: 2107507038}
