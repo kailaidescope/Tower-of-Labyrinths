@@ -46,7 +46,7 @@ public class ChestBehaviour : MonoBehaviour
 
     public void CloseUI()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         menu.SetActive(false);
     }
 }
