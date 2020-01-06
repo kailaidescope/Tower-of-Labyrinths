@@ -10,7 +10,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject chest;
-	[SerializeField] private GameObject exit;
+    [SerializeField] private GameObject exit;
     [SerializeField] private GameObject plane;
     Cell[,] cells;
     List<Wall> walls;
@@ -58,7 +58,7 @@ public class MazeGenerator : MonoBehaviour
 
         for (int i = 0; i < h; i++)
         {
-            for (int j = i%2; j < w; j += 2)
+            for (int j = i % 2; j < w; j += 2)
             {
                 Cell[] c = cells[i, j].GetAround();
                 foreach (Cell v in c)
@@ -77,9 +77,9 @@ public class MazeGenerator : MonoBehaviour
         List<Cell> clls = new List<Cell>(currentCell.GetAround());
         Shuffle(clls);
 
-        foreach(Cell c in clls)
+        foreach (Cell c in clls)
         {
-            if(c != null && !c.GetVisited())
+            if (c != null && !c.GetVisited())
             {
                 RemoveWall(c, currentCell);
                 c.SetVisited(true);
@@ -90,9 +90,9 @@ public class MazeGenerator : MonoBehaviour
 
     public void RemoveWall(Cell a, Cell b)
     {
-        for(int i = 0; i < walls.Count; i++)
+        for (int i = 0; i < walls.Count; i++)
         {
-            if((a == walls[i].GetCells()[0] && b == walls[i].GetCells()[1]) || (a == walls[i].GetCells()[1] && b == walls[i].GetCells()[0]))
+            if ((a == walls[i].GetCells()[0] && b == walls[i].GetCells()[1]) || (a == walls[i].GetCells()[1] && b == walls[i].GetCells()[0]))
             {
                 walls[i].SetActive(false);
             }
@@ -101,7 +101,7 @@ public class MazeGenerator : MonoBehaviour
 
     public void RemoveRandomWall()
     {
-        foreach(Wall w in walls)
+        foreach (Wall w in walls)
         {
             float rand = Random.Range(0f, 1f);
             if (rand < 0.01f)
@@ -116,7 +116,7 @@ public class MazeGenerator : MonoBehaviour
         GameObject par = new GameObject("walls");
         par.transform.position = new Vector3(0f, 0f, 0f);
 
-        foreach(Wall w in walls)
+        foreach (Wall w in walls)
         {
             if (w.GetActive())
             {
@@ -124,25 +124,25 @@ public class MazeGenerator : MonoBehaviour
                 float z = (w.GetCells()[0].GetPos()[1] + w.GetCells()[1].GetPos()[1]) / 2;
                 GameObject obj = Instantiate(wall);
                 obj.transform.position = new Vector3(x, 0.5f, z);
-                if(w.GetCells()[0].GetPos()[1] == w.GetCells()[1].GetPos()[1])
+                if (w.GetCells()[0].GetPos()[1] == w.GetCells()[1].GetPos()[1])
                 {
                     obj.transform.eulerAngles = new Vector3(0, 180f, 0);
                 }
                 else
                 {
-                    
+
                 }
                 obj.transform.parent = par.transform;
             }
         }
 
-        foreach(Cell c in cells)
+        foreach (Cell c in cells)
         {
             int i = 0;
 
-            foreach(Wall w in walls)
+            foreach (Wall w in walls)
             {
-                if(w.GetCells()[0] == c || w.GetCells()[1] == c)
+                if (w.GetCells()[0] == c || w.GetCells()[1] == c)
                 {
                     if (w.GetActive())
                     {
@@ -151,7 +151,7 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
 
-            if(i == 3)
+            if (i == 3)
             {
                 c.SetHasChest(true);
                 c.SetHasEnemy(false);
@@ -159,9 +159,9 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
-        foreach(Cell c in cells)
+        foreach (Cell c in cells)
         {
-            if(c.GetPos()[0] == 0.5f && c.GetPos()[1] == 0.5f)
+            if (c.GetPos()[0] == 0.5f && c.GetPos()[1] == 0.5f)
             {
                 c.SetHasChest(false);
                 c.SetHasEnemy(false);
@@ -169,7 +169,7 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < size.x; i++)
+        for (int i = 0; i < size.x; i++)
         {
             GameObject obj = Instantiate(wall);
             obj.transform.position = new Vector3(i + 0.5f, 0.5f, 0);
@@ -252,10 +252,10 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         GenerateGrid((int)size.x, (int)size.y);
-        CarveGrid(cells[0,0]);
+        CarveGrid(cells[0, 0]);
         RemoveRandomWall();
 
-        plane.transform.localScale = new Vector3(size.x/10f, 1, size.y/10f);
+        plane.transform.localScale = new Vector3(size.x / 10f, 1, size.y / 10f);
         plane.transform.position = new Vector3(size.x / 2, 0, size.y / 2);
 
         SpawnMaze();
@@ -263,6 +263,16 @@ public class MazeGenerator : MonoBehaviour
 
     void Update()
     {
-        
+
+    }
+
+    public Cell[,] GetGrid()
+    {
+        return cells;
+    }
+
+    public List<Wall> GetWalls()
+    {
+        return walls;
     }
 }

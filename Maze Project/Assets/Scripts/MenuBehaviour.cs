@@ -12,6 +12,7 @@ public class MenuBehaviour : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         inventoryToggle = false;
         inventoryOpen = false;
         inventoryPanel.SetActive(false);
@@ -26,6 +27,7 @@ public class MenuBehaviour : MonoBehaviour
         //Outputs
         if (!inventoryOpen && inventoryToggle)
         {
+            Debug.Log("hi");
             Time.timeScale = 0f;
             inventoryOpen = true;
             inventoryPanel.SetActive(true);
