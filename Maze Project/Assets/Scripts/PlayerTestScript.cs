@@ -22,6 +22,7 @@ public class PlayerTestScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         rb3d = GetComponent<Rigidbody>();
         BattleCam.enabled = false; 
         MoveCam.enabled = true;

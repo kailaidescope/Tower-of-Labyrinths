@@ -97,7 +97,7 @@ public class BattleManager : MonoBehaviour
     public void NewBattle(){
         player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerTestScript>();
-
+        
         cID = pScript.charID;
         cAttID = pScript.attackID;
         cItemsID = pScript.items;
@@ -244,27 +244,30 @@ public class BattleManager : MonoBehaviour
         return choice;
     }
     
-    public int advantageCalculator(){
+    public float advantageCalculator(){
         float typeAdvantage = 1;
-        float[][] classAdvantages = new float[3][3] {{1,2,.5},
-                                        {.5,1,2},
-                                        {2,.5,1}};
+        float[ , ] classAdvantages = new float[3,3] {{1f,2f,.5f},
+                                        {.5f,1f,2f},
+                                        {2f,.5f,1f}};
         //class advantage
-        typeAdvantage *= classAdvantages[(int)characterClass][(int)enemyClass[(int)eID]];
+        typeAdvantage *= classAdvantages[(int)characterClass,(int)enemyClass[(int)eID]];
 
-        float[][] elementAdvantages = new float[7][7] {{1,1,.75,.5,.5,.25,.25},
-                                        {1.5,.5,.5,3,.75,1,1.5},
-                                        {1.25,3,.5,.25,1,1,1},
-                                        {1,.25,2,.5,2,.5,1},
-                                        {1,1.5,.5,.75,1,1.5,.5},
-                                        {2,1,2,1,2,.5,2},
-                                        {2,2,1,2,1,2,.5}};
+        float[ , ] elementAdvantages = new float[7,7] {{1f,1f,.75f,.5f,.5f,.25f,.25f},
+                                        {1.5f,.5f,.5f,3f,.75f,1f,1.5f},
+                                        {1.25f,3f,.5f,.25f,1f,1f,1f},
+                                        {1f,.25f,2f,.5f,2f,.5f,1f},
+                                        {1f,1.5f,.5f,.75f,1f,1.5f,.5f},
+                                        {2f,1f,2f,1f,2f,.5f,2f},
+                                        {2f,2f,1f,2f,1f,2f,.5f}};
         //element advantage
-        typeAdvantage *= elementAdvantages[(int)characterElement][(int)enemyElement[(int)eID]];
+        typeAdvantage *= elementAdvantages[(int)characterElement,(int)enemyElement[(int)eID]];
+
+        return typeAdvantage;
     }
 
     public void handleBattle(int IDNUM, int enemyChoice){
         float typeAdvantage = 1; //input formula later
+        Debug.Log("TA: " + typeAdvantage);
         float dmgDrop = 0;
         if(attackPriority[IDNUM] <= attackPriority[enemyChoice]){
             switch ((int)attackType[IDNUM]){
