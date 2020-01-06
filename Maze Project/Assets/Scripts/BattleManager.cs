@@ -244,7 +244,7 @@ public class BattleManager : MonoBehaviour
         return choice;
     }
     
-    public float advantageCalculator(){
+    public float advantageCalculator(int IDNUM){
         float typeAdvantage = 1;
         float[ , ] classAdvantages = new float[3,3] {{1f,2f,.5f},
                                         {.5f,1f,2f},
@@ -260,13 +260,13 @@ public class BattleManager : MonoBehaviour
                                         {2f,1f,2f,1f,2f,.5f,2f},
                                         {2f,2f,1f,2f,1f,2f,.5f}};
         //element advantage
-        typeAdvantage *= elementAdvantages[(int)characterElement,(int)enemyElement[(int)eID]];
+        typeAdvantage *= elementAdvantages[(int)characterElement,(int)enemyElement[(int)eID]] * elementAdvantages[(int)attackElement[IDNUM],(int)enemyElement[(int)eID]];
 
         return typeAdvantage;
     }
 
     public void handleBattle(int IDNUM, int enemyChoice){
-        float typeAdvantage = 1; //input formula later
+        float typeAdvantage = advantageCalculator(IDNUM); //input formula later
         Debug.Log("TA: " + typeAdvantage);
         float dmgDrop = 0;
         if(attackPriority[IDNUM] <= attackPriority[enemyChoice]){
@@ -314,14 +314,14 @@ public class BattleManager : MonoBehaviour
             switch ((int)attackType[enemyChoice]){
                 case 0:
                     Debug.Log(dmgDrop);
-                    float dmg = cdefense * abilityMagnitude[enemyChoice] * typeAdvantage * eapi - dmgDrop;
+                    float dmg = cdefense * abilityMagnitude[enemyChoice] * (1/typeAdvantage) * eapi - dmgDrop;
                     if(dmg < 0) dmg = 0;
                     characterHealth -= dmg;     
                     enemyMana -= manaCost[enemyChoice];
                     rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
                     break;
                 case 1:
-                    float hpgain = abilityMagnitude[enemyChoice] * typeAdvantage * empi;
+                    float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                     enemyHealth += hpgain;
                     enemyMana -= manaCost[enemyChoice];
                     rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
@@ -358,14 +358,14 @@ public class BattleManager : MonoBehaviour
         {
             switch ((int)attackType[enemyChoice]){
                 case 0:
-                    float dmg = cdefense * abilityMagnitude[enemyChoice] * typeAdvantage * eapi - dmgDrop;
+                    float dmg = cdefense * abilityMagnitude[enemyChoice] * (1/typeAdvantage) * eapi - dmgDrop;
                     if(dmg < 0) dmg = 0;
                     characterHealth -= dmg;     
                     enemyMana -= manaCost[enemyChoice];
                     rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
                     break;
                 case 1:
-                    float hpgain = abilityMagnitude[enemyChoice] * typeAdvantage * empi;
+                    float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                     enemyHealth += hpgain;
                     enemyMana -= manaCost[enemyChoice];
                     rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
@@ -511,14 +511,14 @@ public class BattleManager : MonoBehaviour
         
         switch ((int)attackType[enemyChoice]){
             case 0:
-                float dmg = cdefense * abilityMagnitude[enemyChoice] * typeAdvantage * eapi - dmgDrop;
+                float dmg = cdefense * abilityMagnitude[enemyChoice] * (1/typeAdvantage) * eapi - dmgDrop;
                 if(dmg < 0) dmg = 0;
                 characterHealth -= dmg;     
                 enemyMana -= manaCost[enemyChoice];
                 rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
                 break;
             case 1:
-                float hpgain = abilityMagnitude[enemyChoice] * typeAdvantage * empi;
+                float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                 enemyHealth += hpgain;
                 enemyMana -= manaCost[enemyChoice];
                 rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
