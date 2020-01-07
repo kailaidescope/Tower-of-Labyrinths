@@ -991,7 +991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -58.820312, y: 231.90039}
+  m_AnchoredPosition: {x: -58.820297, y: 231.90039}
   m_SizeDelta: {x: -119.85, y: -465.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311268030
@@ -2323,7 +2323,9 @@ MonoBehaviour:
   enemyManas:
   - 50
   - 0
-  enemyElement: []
+  enemyElement:
+  - 1
+  - 1
   enemyClass:
   - 1
   - 0
