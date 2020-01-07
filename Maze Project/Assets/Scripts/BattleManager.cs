@@ -311,6 +311,7 @@ public class BattleManager : MonoBehaviour
                 default:
                     break;
             }
+            checkLoss();
             switch ((int)attackType[enemyChoice]){
                 case 0:
                     Debug.Log(dmgDrop);
@@ -353,6 +354,7 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
+            checkLoss();
         }
         else
         {
@@ -397,6 +399,7 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
+            checkLoss();
             switch ((int)attackType[IDNUM]){
                 case 0:
                     float dmg = edi * abilityMagnitude[IDNUM] * typeAdvantage  * capower - dmgDrop;
@@ -437,10 +440,13 @@ public class BattleManager : MonoBehaviour
                 default:
                     break;
             }
+            checkLoss();
         }
 
         dispResponse();
-
+        
+    }
+    public void checkLoss(){
         if(enemyHealth <= 0){
             if(characterHealth<=0){
                 EndBattleEnemy();
@@ -453,7 +459,6 @@ public class BattleManager : MonoBehaviour
             EndBattleEnemy();
         }
     }
-   
     public void handleITEMS(int IDNUM, int index){
         switch(IDNUM){
             case 1:
