@@ -37,7 +37,10 @@ public class AIMovement : MonoBehaviour {
         }
         else
         {
-            Physics.Raycast(new Ray(transform.position, goal.position), 30);
+            if (Vector3.Distance(transform.position, goal.position) < detectRadius)
+            {
+                isFollowing = true;
+            }
         }
 
         if (isFollowing)
@@ -46,7 +49,12 @@ public class AIMovement : MonoBehaviour {
             {
                 agent.isStopped = false; 
             }
-            agent.destination = goal.position;
+
+            Vector3 pos = goal.gameObject.GetComponent<Rigidbody>().position;
+            float x = pos.x % 10;
+            float z = pos.z % 10;
+            pos = new Vector3(x, 0, z);
+            agent.destination = pos;
         }
         else
         {
