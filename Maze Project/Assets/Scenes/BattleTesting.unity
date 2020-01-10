@@ -991,7 +991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -58.820297, y: 231.90039}
+  m_AnchoredPosition: {x: -58.820312, y: 231.90039}
   m_SizeDelta: {x: -119.85, y: -465.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311268030
@@ -1867,6 +1867,8 @@ MonoBehaviour:
   - 0
   - 0
   enemyID: 0
+  detectRadius: 0
+  followRadius: 0
 --- !u!1 &466685443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,28 +2318,180 @@ MonoBehaviour:
   cdefense: 0
   enemyNames:
   - Dummy
+  - Water Golem
+  - Water Sneak
+  - Water Mage
+  - Water Guardian
+  - Wind Golem
+  - Wind Sneak
+  - Wind Mage
+  - Wind Guardian
+  - Earth Golem
+  - Earth Sneak
+  - Earth Mage
+  - Earth Guardian
   - Fire Golem
+  - Fire Sneak
+  - Fire Mage
+  - Fire Guardian
+  - Unawakened Herald
+  - Awakening Herald
+  - Angelic Herald
+  - True Herald
   enemyHealths:
   - 50
-  - 0
+  - 75
+  - 25
+  - 50
+  - 50
+  - 75
+  - 25
+  - 50
+  - 100
+  - 75
+  - 25
+  - 50
+  - 100
+  - 75
+  - 25
+  - 50
+  - 100
+  - 200
+  - 200
+  - 400
+  - 400
   enemyManas:
   - 50
-  - 0
+  - 50
+  - 40
+  - 100
+  - 50
+  - 50
+  - 40
+  - 100
+  - 100
+  - 50
+  - 40
+  - 100
+  - 100
+  - 50
+  - 40
+  - 100
+  - 100
+  - 200
+  - 200
+  - 400
+  - 400
   enemyElement:
+  - 0
+  - 2
+  - 2
+  - 2
+  - 2
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
+  - 4
+  - 4
   - 1
   - 1
+  - 1
+  - 1
+  - 0
+  - 0
+  - 5
+  - 6
   enemyClass:
+  - 0
+  - 0
+  - 2
+  - 1
+  - 2
+  - 0
+  - 2
+  - 1
+  - 1
+  - 0
+  - 2
+  - 1
+  - 0
+  - 0
+  - 2
+  - 1
+  - 1
+  - 2
+  - 2
   - 1
   - 0
   eapower:
   - 1
   - 1
+  - 2
+  - 0.9
+  - 2
+  - 1
+  - 2
+  - 0.9
+  - 1.1
+  - 1
+  - 2
+  - 0.9
+  - 1.5
+  - 1
+  - 2
+  - 0.9
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.5
+  - 1.5
   empower:
   - 1
   - 1
+  - 1
+  - 2
+  - 1.3
+  - 1
+  - 1
+  - 2
+  - 2.5
+  - 1
+  - 1
+  - 2
+  - 1.5
+  - 1
+  - 1
+  - 2
+  - 2.5
+  - 1.2
+  - 1.2
+  - 2
+  - 2
   edefense:
   - 1
+  - 1.1
   - 1
+  - 0.5
+  - 1.3
+  - 1.1
+  - 1
+  - 0.5
+  - 1.2
+  - 1.1
+  - 1
+  - 0.5
+  - 3
+  - 1.1
+  - 1
+  - 0.5
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.5
+  - 1.5
   eapi: 0
   empi: 0
   edi: 0
@@ -6613,7 +6767,7 @@ GameObject:
   - component: {fileID: 1519838694}
   - component: {fileID: 1519838695}
   m_Layer: 0
-  m_Name: Player Test
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7498,6 +7652,8 @@ MonoBehaviour:
   - 0
   - 0
   enemyID: 0
+  detectRadius: 0
+  followRadius: 0
 --- !u!195 &1738172363
 NavMeshAgent:
   m_ObjectHideFlags: 0
