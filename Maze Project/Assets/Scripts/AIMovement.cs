@@ -27,8 +27,8 @@ public class AIMovement : MonoBehaviour {
 
 
     void FixedUpdate() {
-
-        if (isFollowing)
+        agent.destination = goal.position;
+        /*if (isFollowing)
         {
             if(Vector3.Distance(transform.position, goal.position) > followRadius)
             {
@@ -62,6 +62,6 @@ public class AIMovement : MonoBehaviour {
             {
                 agent.isStopped = true;
             }
-        }
+        }*/
     }
 }

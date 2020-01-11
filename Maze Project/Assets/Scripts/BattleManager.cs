@@ -87,7 +87,10 @@ public class BattleManager : MonoBehaviour
     private string enemyName;
     private float enemyHealth;
     private float enemyMana;
-
+    void Awake()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -132,8 +135,7 @@ public class BattleManager : MonoBehaviour
         i2.SetText(itemNames[(int)cItemsID[2]]);
         i3.SetText(itemNames[(int)cItemsID[3]]);
 
-        cName.SetText(characterNames[(int)cID]);
-        eName.SetText(enemyNames[(int)eID]);
+        
 
         characterHealth = pScript.hp;
         characterMana = pScript.mana;
@@ -145,11 +147,19 @@ public class BattleManager : MonoBehaviour
         eID = pScript.attackerID;
         eAttID = pScript.enemyMoves;
         
+        cName.SetText(characterNames[(int)cID]);
+        eName.SetText(enemyNames[(int)eID]);
+        
         cHP.SetText("Health: " + characterHealth);
         cMP.SetText("Mana: " + characterMana);
 
         eHP.SetText("Health: " + enemyHealth);
         eMP.SetText("Mana: " + enemyMana);
+
+        a0.SetText(attackNames[(int)cAttID[0]]);
+        a1.SetText(attackNames[(int)cAttID[1]]);
+        a2.SetText(attackNames[(int)cAttID[2]]);
+        a3.SetText(attackNames[(int)cAttID[3]]);
 
         i0.SetText(itemNames[(int)cItemsID[0]]);
         i1.SetText(itemNames[(int)cItemsID[1]]);
@@ -203,6 +213,7 @@ public class BattleManager : MonoBehaviour
     }
 
     public void EndBattlePlayer(){
+        Debug.Log("UBFEKGYV");
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(characterNames[(int)cID] + " defeated " + enemyNames[(int)eID] + "!");
         BattleCam.enabled = !BattleCam.enabled;
@@ -230,6 +241,7 @@ public class BattleManager : MonoBehaviour
         }
         if(oom){
             choice = 4;
+            return choice;
         }else{
             for(;;){
                 if(eAttID[choice] == 0 || manaCost[(int)eAttID[choice]] > enemyMana){
@@ -311,7 +323,6 @@ public class BattleManager : MonoBehaviour
                 default:
                     break;
             }
-            checkLoss();
             switch ((int)attackType[enemyChoice]){
                 case 0:
                     Debug.Log(dmgDrop);
@@ -354,7 +365,6 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
-            checkLoss();
         }
         else
         {
@@ -399,7 +409,6 @@ public class BattleManager : MonoBehaviour
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                     break;
             }
-            checkLoss();
             switch ((int)attackType[IDNUM]){
                 case 0:
                     float dmg = edi * abilityMagnitude[IDNUM] * typeAdvantage  * capower - dmgDrop;
@@ -440,13 +449,7 @@ public class BattleManager : MonoBehaviour
                 default:
                     break;
             }
-            checkLoss();
         }
-
-        dispResponse();
-        
-    }
-    public void checkLoss(){
         if(enemyHealth <= 0){
             if(characterHealth<=0){
                 EndBattleEnemy();
@@ -458,6 +461,8 @@ public class BattleManager : MonoBehaviour
         if(characterHealth<=0){
             EndBattleEnemy();
         }
+        dispResponse();
+        
     }
     public void handleITEMS(int IDNUM, int index){
         switch(IDNUM){
@@ -508,10 +513,10 @@ public class BattleManager : MonoBehaviour
                 return;
                 break;
         }
-
-        int enemyChoice = (int)eAttID[ChooseEnemyID()];
-        
-        float typeAdvantage = 1; //input formula later
+        int enemyChoice;
+        if(ChooseEnemyID() != 4) enemyChoice = (int)eAttID[ChooseEnemyID()];
+        else enemyChoice = 0;
+        float typeAdvantage = advantageCalculator(0); //input formula later
         float dmgDrop = 0;
         
         switch ((int)attackType[enemyChoice]){
@@ -555,9 +560,6 @@ public class BattleManager : MonoBehaviour
                 rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
                 break;
         }
-        
-        dispResponse();
-        
         if(enemyHealth <= 0){
             if(characterHealth<=0){
                 EndBattleEnemy();
@@ -570,12 +572,17 @@ public class BattleManager : MonoBehaviour
         if(characterHealth<=0){
             EndBattleEnemy();
         }
+        dispResponse();
 
     }
 
     public void Attack0Click(){
         int IDNUM = (int) cAttID[0];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
+        if(ChooseEnemyID() == 4) {
+            handleBattle(IDNUM, 0);
+            return;
+        }
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -589,6 +596,10 @@ public class BattleManager : MonoBehaviour
     public void Attack1Click(){
         int IDNUM = (int) cAttID[1];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
+        if(ChooseEnemyID() == 4) {
+            handleBattle(IDNUM, 0);
+            return;
+        }
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -602,6 +613,10 @@ public class BattleManager : MonoBehaviour
     public void Attack2Click(){
         int IDNUM = (int) cAttID[2];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
+        if(ChooseEnemyID() == 4) {
+            handleBattle(IDNUM, 0);
+            return;
+        }
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
@@ -615,6 +630,10 @@ public class BattleManager : MonoBehaviour
     public void Attack3Click(){
         int IDNUM = (int) cAttID[3];
         if(manaCost[IDNUM] > characterMana){dispError();return;}
+        if(ChooseEnemyID() == 4) {
+            handleBattle(IDNUM, 0);
+            return;
+        }
         int enemyChoice = (int)eAttID[ChooseEnemyID()]; 
         Debug.Log(enemyChoice);
         handleBattle(IDNUM, enemyChoice);
