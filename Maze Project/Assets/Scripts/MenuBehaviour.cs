@@ -39,4 +39,9 @@ public class MenuBehaviour : MonoBehaviour
             inventoryPanel.SetActive(false);
         }
     }
+
+    public void Quit(){
+        Application.Quit();
+        Time.timeScale = 1f;
+    }
 }

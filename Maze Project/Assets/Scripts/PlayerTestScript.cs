@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +7,7 @@ public class PlayerTestScript : MonoBehaviour
 {
     Rigidbody rb3d;
     public Camera MoveCam, BattleCam;
+    public Transform EnemySpot; 
     public float attackerID = 000f;
     public float charID = 000f;
     public float mana;
@@ -27,7 +29,16 @@ public class PlayerTestScript : MonoBehaviour
         BattleCam.enabled = false; 
         MoveCam.enabled = true;
     }
-
+    public string AddItem(){
+        int index = Array.IndexOf(items, 0);
+        if(index == -1){
+            return "Inventory is full!";
+        }else{
+            int choice = UnityEngine.Random.Range(1,8);
+            items[index] = choice;
+            return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>().itemNames[choice];
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +54,7 @@ public class PlayerTestScript : MonoBehaviour
             attackerID = other.gameObject.GetComponent<AIMovement>().enemyID;
             enemyMoves = other.gameObject.GetComponent<AIMovement>().enemyAttackID;
             other.gameObject.GetComponent<AIMovement>().enabled = false;
-            other.gameObject.transform.position = new Vector3(389.67f, 132.6f, -189.16f);
+            other.gameObject.transform.position = EnemySpot.position;
             GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>().NewBattle();
         }
     }

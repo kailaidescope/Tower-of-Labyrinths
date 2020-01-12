@@ -37,8 +37,10 @@ public class ChestBehaviour : MonoBehaviour
         {
             if(menu.gameObject.transform.GetChild(i).name == "ItemDisplay")
             {
-                menu.gameObject.transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().text = chest.GetItem().ToString();
-                obj.GetComponent<PlayerBehaviour>().AddItem(chest.GetItem());
+                menu.gameObject.transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().text = obj.GetComponent<PlayerTestScript>().AddItem();
+
+                //menu.gameObject.transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().text = chest.GetItem().ToString();
+                //obj.GetComponent<PlayerBehaviour>().AddItem(chest.GetItem());
                 return;
             }
         }

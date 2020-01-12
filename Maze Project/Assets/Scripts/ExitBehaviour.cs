@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ExitBehaviour : MonoBehaviour
 {
     //1245526462146146136136661664661636616366163616515615115146123562344
@@ -17,6 +17,7 @@ public class ExitBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
             Time.timeScale = 0f;
             menu.SetActive(true);
         }
