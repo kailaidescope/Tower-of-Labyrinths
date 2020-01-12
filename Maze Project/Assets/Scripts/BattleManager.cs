@@ -150,6 +150,9 @@ public class BattleManager : MonoBehaviour
         cName.SetText(characterNames[(int)cID]);
         eName.SetText(enemyNames[(int)eID]);
         
+        pScript.hp = characterHealth;
+        pScript.mana = characterMana;
+
         cHP.SetText("Health: " + characterHealth);
         cMP.SetText("Mana: " + characterMana);
 
@@ -288,37 +291,37 @@ public class BattleManager : MonoBehaviour
                     if(dmg < 0) dmg = 0;
                     enemyHealth -= dmg;     
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID]);
+                    rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID] + " with " + attackNames[IDNUM]);
                     break;
                 case 1:
                     float hpgain = abilityMagnitude[IDNUM] * typeAdvantage * cmpower;
                     characterHealth += hpgain;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " gained " + hpgain + " HP!");
+                    rPlayer.SetText(characterNames[(int)cID] + " gained " + hpgain + " HP!" + " with " + attackNames[IDNUM]);
                     break;
                 case 2:
                     float defMultiplier = 1 - (abilityMagnitude[IDNUM] * cmpower);
                     cdefense *= defMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!" + " with " + attackNames[IDNUM]);
                     break;
                 case 3:
                     float atkMultiplier = 1 + (abilityMagnitude[IDNUM] * cmpower);
                     capower *= atkMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!" + " with " + attackNames[IDNUM]);
                     break;
                 case 4:
                     float mMultiplier =  1 + (abilityMagnitude[IDNUM]);
                     cmpower *= mMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!" + " with " + attackNames[IDNUM]);
                     break;
                 case 5:
                     dmgDrop = (abilityMagnitude[IDNUM] * capower);
                     Debug.Log(dmgDrop);
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!");
+                    rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!" + " with " + attackNames[IDNUM]);
                     break;
                 default:
                     break;
@@ -330,36 +333,36 @@ public class BattleManager : MonoBehaviour
                     if(dmg < 0) dmg = 0;
                     characterHealth -= dmg;     
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
+                    rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID] + " with " + attackNames[enemyChoice]);
                     break;
                 case 1:
                     float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                     enemyHealth += hpgain;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 2:
                     float defMultiplier = 1 - (abilityMagnitude[enemyChoice] * empi);
                     edi *= defMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 3:
                     float atkMultiplier = 1 + (abilityMagnitude[enemyChoice] * empi);
                     eapi *= atkMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 4:
                     float mMultiplier =  1 + (abilityMagnitude[enemyChoice]);
                     empi *= mMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 5:
                     dmgDrop = (abilityMagnitude[enemyChoice] * eapi);
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!"+ " with " + attackNames[enemyChoice]);
                     break;
                 default:
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
@@ -374,36 +377,36 @@ public class BattleManager : MonoBehaviour
                     if(dmg < 0) dmg = 0;
                     characterHealth -= dmg;     
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
+                    rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]+ " with " + attackNames[enemyChoice]);
                     break;
                 case 1:
                     float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                     enemyHealth += hpgain;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 2:
                     float defMultiplier = 1 - (abilityMagnitude[enemyChoice] * empi);
                     edi *= defMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 3:
                     float atkMultiplier = 1 + (abilityMagnitude[enemyChoice] * empi);
                     eapi *= atkMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 4:
                     float mMultiplier =  1 + (abilityMagnitude[enemyChoice]);
                     empi *= mMultiplier;
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!"+ " with " + attackNames[enemyChoice]);
                     break;
                 case 5:
                     dmgDrop = (abilityMagnitude[enemyChoice] * eapi);
                     enemyMana -= manaCost[enemyChoice];
-                    rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
+                    rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!"+ " with " + attackNames[enemyChoice]);
                     break;
                 default:
                     rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
@@ -415,36 +418,36 @@ public class BattleManager : MonoBehaviour
                     if(dmg < 0) dmg = 0;
                     enemyHealth -= dmg;     
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID]);
+                    rPlayer.SetText(characterNames[(int)cID] + " did " + dmg + " damage to " + enemyNames[(int)eID] + " with " + attackNames[IDNUM]);
                     break;
                 case 1:
                     float hpgain = abilityMagnitude[IDNUM] * typeAdvantage * cmpower;
                     characterHealth += hpgain;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " gained " + hpgain + " HP!");
+                    rPlayer.SetText(characterNames[(int)cID] + " gained " + hpgain + " HP!" + " with " + attackNames[IDNUM]);
                     break;
                 case 2:
                     float defMultiplier = 1 - (abilityMagnitude[IDNUM] * cmpower);
                     cdefense *= defMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their defense!" + " with " + attackNames[IDNUM]);
                     break;
                 case 3:
                     float atkMultiplier = 1 + (abilityMagnitude[IDNUM] * cmpower);
                     capower *= atkMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their attack power!" + " with " + attackNames[IDNUM]);
                     break;
                 case 4:
                     float mMultiplier =  1 + (abilityMagnitude[IDNUM]);
                     cmpower *= mMultiplier;
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!");
+                    rPlayer.SetText(characterNames[(int)cID] + " boosted their magic power!" + " with " + attackNames[IDNUM]);
                     break;
                 case 5:
                     dmgDrop = (abilityMagnitude[IDNUM] * capower);
                     characterMana -= manaCost[IDNUM];
-                    rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!");
+                    rPlayer.SetText(characterNames[(int)cID] + " tried parrying " + enemyNames[(int)eID] + "'s attack!" + " with " + attackNames[IDNUM]);
                     break;
                 default:
                     break;
@@ -525,36 +528,36 @@ public class BattleManager : MonoBehaviour
                 if(dmg < 0) dmg = 0;
                 characterHealth -= dmg;     
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]);
+                rEnemy.SetText( enemyNames[(int)eID] + " did " + dmg + " damage to " + characterNames[(int)cID]+ " with " + attackNames[enemyChoice]);
                 break;
             case 1:
                 float hpgain = abilityMagnitude[enemyChoice] * (1/typeAdvantage) * empi;
                 enemyHealth += hpgain;
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!");
+                rEnemy.SetText(enemyNames[(int)eID] + " gained " + hpgain + " HP!"+ " with " + attackNames[enemyChoice]);
                 break;
             case 2:
                 float defMultiplier = 1 - (abilityMagnitude[enemyChoice] * empi);
                 edi *= defMultiplier;
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!");
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their defense!"+ " with " + attackNames[enemyChoice]);
                 break;
             case 3:
                 float atkMultiplier = 1 + (abilityMagnitude[enemyChoice] * empi);
                 eapi *= atkMultiplier;
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!");
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their attack power!"+ " with " + attackNames[enemyChoice]);
                 break;
             case 4:
                 float mMultiplier =  1 + (abilityMagnitude[enemyChoice]);
                 empi *= mMultiplier;
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!");
+                rEnemy.SetText(enemyNames[(int)eID] + " boosted their magic power!"+ " with " + attackNames[enemyChoice]);
                 break;
             case 5:
                 dmgDrop = (abilityMagnitude[enemyChoice] * eapi);
                 enemyMana -= manaCost[enemyChoice];
-                rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!");
+                rEnemy.SetText(enemyNames[(int)eID] + " tried parrying " + characterNames[(int)cID] + "'s attack!"+ " with " + attackNames[enemyChoice]);
                 break;
             default:
                 rEnemy.SetText(enemyNames[(int)eID] + " has no mana!"); 
