@@ -23,6 +23,8 @@ public class BattleManager : MonoBehaviour
     public Transform ErrorMSG = null;
     [SerializeField]
     public Transform Outcome = null;
+    [SerializeField]
+    public Transform LoseScreen = null;
 
     public TextMeshProUGUI rPlayer;
     public TextMeshProUGUI rEnemy;
@@ -100,7 +102,7 @@ public class BattleManager : MonoBehaviour
     public void NewBattle(){
         player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerTestScript>();
-        
+        LoseScreen.gameObject.SetActive(false);
         cID = pScript.charID;
         cAttID = pScript.attackID;
         cItemsID = pScript.items;
@@ -225,6 +227,7 @@ public class BattleManager : MonoBehaviour
     }
 
     public void EndBattleEnemy(){
+        LoseScreen.gameObject.SetActive(true);
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(enemyNames[(int)eID] + " defeated " + characterNames[(int)cID] + "!");
         BattleCam.enabled = !BattleCam.enabled;
