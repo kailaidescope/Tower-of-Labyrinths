@@ -28,7 +28,7 @@ public class Cell
 
         //float dist = Mathf.Sqrt(Mathf.Pow(a,2) + Mathf.Pow(b,2));
         float rand = Random.Range(0f, 1f);
-        if (rand < enemyChance && x > 3 && z > 3)
+        if (rand < enemyChance && x > 3f && z > 3f)
         {
             hasEnemy = true;
         }
