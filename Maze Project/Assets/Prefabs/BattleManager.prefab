@@ -2172,7 +2172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.54942, y: 52}
+  m_AnchoredPosition: {x: 0.5494385, y: 52}
   m_SizeDelta: {x: -1.1035, y: -479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6729032278705462631
@@ -4509,7 +4509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0027008, y: -9.3}
+  m_AnchoredPosition: {x: 0.0027008, y: -9.299988}
   m_SizeDelta: {x: 336.41, y: 18.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6729032279585520741
@@ -4693,6 +4693,7 @@ MonoBehaviour:
   Response: {fileID: 6729032280139291892}
   ErrorMSG: {fileID: 6729032279233979944}
   Outcome: {fileID: 6729032278434007456}
+  LoseScreen: {fileID: 0}
   rPlayer: {fileID: 6729032279481513028}
   rEnemy: {fileID: 6729032279385192287}
   rOutcome: {fileID: 6729032279334860349}
@@ -4843,10 +4844,10 @@ MonoBehaviour:
   - 0.5
   manaCost:
   - 1000
-  - 15
-  - 10
-  - 20
-  - 10
+  - 5
+  - 0
+  - 5
+  - 5
   - 20
   - 30
   - 25
@@ -5304,7 +5305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.57176, y: 231.9}
+  m_AnchoredPosition: {x: 0.57177734, y: 231.89996}
   m_SizeDelta: {x: -1.1228, y: -465.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6729032279731495132
@@ -6730,7 +6731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.10322, y: -10.1}
+  m_AnchoredPosition: {x: 0.10322, y: -10.099976}
   m_SizeDelta: {x: 336.78, y: 20.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6729032279987210227

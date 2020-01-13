@@ -7,7 +7,10 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private Vector2 size;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject corner;
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemy0;
+    [SerializeField] private GameObject enemy1;
+    [SerializeField] private GameObject enemy2;
+    [SerializeField] private GameObject enemy3;
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject chest;
     [SerializeField] private GameObject exit;
@@ -209,7 +212,12 @@ public class MazeGenerator : MonoBehaviour
         {
             if (c.GetHasEnemy())
             {
-                GameObject obj = Instantiate(enemy);
+                int choice = UnityEngine.Random.Range(0,4);
+                GameObject obj = null;
+                if(choice == 0)obj = Instantiate(enemy0);
+                if(choice == 1)obj = Instantiate(enemy1);
+                if(choice == 2)obj = Instantiate(enemy2);
+                else obj = Instantiate(enemy3);
                 obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
                 obj.transform.parent = enemies.transform;
             }

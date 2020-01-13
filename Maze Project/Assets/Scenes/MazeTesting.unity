@@ -478,7 +478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 156.3, y: 277.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341180979
@@ -1905,7 +1905,10 @@ MonoBehaviour:
   size: {x: 15, y: 15}
   wall: {fileID: 5815119790934324543, guid: 6272b3bbf5f1da64ba88be8a8391ea63, type: 3}
   corner: {fileID: 5815119790934324543, guid: 9e5beeb9229c0cf4e9cf28f57e440246, type: 3}
-  enemy: {fileID: 1419205793385816174, guid: a0bf1da10772bab4db222faab1e2d71d, type: 3}
+  enemy0: {fileID: 1601669626790989404, guid: e5c9bcd25fb99e34f8d0175b5547313c, type: 3}
+  enemy1: {fileID: 1601669626790989404, guid: e5c9bcd25fb99e34f8d0175b5547313c, type: 3}
+  enemy2: {fileID: 1601669626790989404, guid: e5c9bcd25fb99e34f8d0175b5547313c, type: 3}
+  enemy3: {fileID: 1601669626790989404, guid: e5c9bcd25fb99e34f8d0175b5547313c, type: 3}
   coin: {fileID: 986171724393021642, guid: 588f1b1e64ba097499dc569dc95087e9, type: 3}
   chest: {fileID: 5952451796366702895, guid: 92ff4592f7f062b4c81fc312d0b34ac4, type: 3}
   exit: {fileID: 5574197589169746834, guid: a50175ac944a0d340a659fdc201d34bf, type: 3}
