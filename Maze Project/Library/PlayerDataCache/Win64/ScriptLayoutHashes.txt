@@ -1,13 +1,16 @@
 Win64
 PlayerPath?
-C:/Users/xyzft/Desktop/code/Tower-of-Labyrinths/Maze Project/Builds/TowerOfLabyrinths.exe
+C:/Users/xyzft/Desktop/code/Tower-of-Labyrinths/Maze Project/Builds/Test4/TowerOfLabyrinths.exe
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Level-1.unity
 Assets/Scenes/Level-2.unity
 Assets/Scenes/Level-3.unity
 Assets/Scenes/Level-4.unity
-Assets/Scenes/Level-5.unity
+Assets/Scenes/Boss-Level-1.unity
+Assets/Scenes/Boss-Level-2.unity
+Assets/Scenes/Boss-Level-3.unity
+Assets/Scenes/Boss-Level-4.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
