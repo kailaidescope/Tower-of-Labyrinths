@@ -100,6 +100,10 @@ public class BattleManager : MonoBehaviour
     }
 
     public void NewBattle(){
+        BattleCam.gameObject.SetActive(true);
+        MoveCam.gameObject.SetActive(false);
+        BattleCam.enabled = true;
+        MoveCam.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<PlayerTestScript>();
         LoseScreen.gameObject.SetActive(false);
@@ -221,8 +225,10 @@ public class BattleManager : MonoBehaviour
         Debug.Log("UBFEKGYV");
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(characterNames[(int)cID] + " defeated " + enemyNames[(int)eID] + "!");
-        BattleCam.enabled = !BattleCam.enabled;
-        MoveCam.enabled = !MoveCam.enabled;
+        BattleCam.gameObject.SetActive(false);
+        MoveCam.gameObject.SetActive(true);
+        BattleCam.enabled = false;
+        MoveCam.enabled = true;
         Instantiate(prefab, new Vector3(389.67f, 134.6f, -189.16f), Quaternion.identity);
     }
 
@@ -230,8 +236,10 @@ public class BattleManager : MonoBehaviour
         LoseScreen.gameObject.SetActive(true);
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(enemyNames[(int)eID] + " defeated " + characterNames[(int)cID] + "!");
-        BattleCam.enabled = !BattleCam.enabled;
-        MoveCam.enabled = !MoveCam.enabled;
+        BattleCam.gameObject.SetActive(false);
+        MoveCam.gameObject.SetActive(true);
+        BattleCam.enabled = false;
+        MoveCam.enabled = true;
         Instantiate(prefab, new Vector3(389.67f, 134.6f, -189.16f), Quaternion.identity);
         Instantiate(prefab, new Vector3(385.63f, 134.6f, -195.38f), Quaternion.identity);
     }
