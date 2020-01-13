@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
     public TextMeshProUGUI rEnemy;
     
     public TextMeshProUGUI rOutcome;
+    public TextMeshProUGUI ItemsDisplay;
 
     public TextMeshProUGUI a0;
     public TextMeshProUGUI a1;
@@ -164,7 +165,9 @@ public class BattleManager : MonoBehaviour
 
         eHP.SetText("Health: " + enemyHealth);
         eMP.SetText("Mana: " + enemyMana);
-
+        
+        ItemsDisplay.SetText("ITEMS:\n" + itemNames[(int)cItemsID[0]] + "\n" + itemNames[(int)cItemsID[1]] + "\n" + itemNames[(int)cItemsID[2]] + "\n" + itemNames[(int)cItemsID[3]]);
+        
         a0.SetText(attackNames[(int)cAttID[0]]);
         a1.SetText(attackNames[(int)cAttID[1]]);
         a2.SetText(attackNames[(int)cAttID[2]]);
