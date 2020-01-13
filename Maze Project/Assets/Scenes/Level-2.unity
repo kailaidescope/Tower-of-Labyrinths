@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -536,7 +536,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8016879201a66db4bb882a6497fa69eb, type: 2}
+  - {fileID: 2100000, guid: d897dda939faf89458e5d5b47a08908c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -897,8 +897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 15, y: 15}
-  wall: {fileID: 5815119790934324543, guid: 6272b3bbf5f1da64ba88be8a8391ea63, type: 3}
-  corner: {fileID: 5815119790934324543, guid: 9e5beeb9229c0cf4e9cf28f57e440246, type: 3}
+  wall: {fileID: 5815119790934324543, guid: 1cdf1068903971447a2f5d036a8f683d, type: 3}
+  corner: {fileID: 5815119790934324543, guid: 2ee6299d3cd8dec42989eb64373cd5a7, type: 3}
   enemy0: {fileID: 8327045442693555769, guid: fdfab902fc68d7d4e84aaf884de66ee1, type: 3}
   enemy1: {fileID: 8915849502772672413, guid: f9b5c098866abc0489fe1e2ee0fa2412, type: 3}
   enemy2: {fileID: 1746111227196813088, guid: 8974ce4970a59ac43be4f242791a38ab, type: 3}

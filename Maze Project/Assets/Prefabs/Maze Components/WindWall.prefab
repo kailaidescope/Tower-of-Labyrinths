@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6295489312060919052}
   - component: {fileID: 4044338449128513809}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: WindWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7f021acf4cc021489d440761f5a16e7, type: 2}
+  - {fileID: 2100000, guid: d897dda939faf89458e5d5b47a08908c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
