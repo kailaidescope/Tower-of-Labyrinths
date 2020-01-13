@@ -24,6 +24,10 @@ public class PlayerTestScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BattleCam.gameObject.SetActive(false);
+        MoveCam.gameObject.SetActive(true);
+        BattleCam.enabled = false;
+        MoveCam.enabled = true;
         Time.timeScale = 1f;
         rb3d = GetComponent<Rigidbody>();
         BattleCam.enabled = false; 
@@ -59,7 +63,9 @@ public class PlayerTestScript : MonoBehaviour
         }
     }
     public void SwitchCameras(){
-        BattleCam.enabled = !BattleCam.enabled;
-        MoveCam.enabled = !MoveCam.enabled;
+        BattleCam.gameObject.SetActive(true);
+        MoveCam.gameObject.SetActive(false);
+        BattleCam.enabled = true;
+        MoveCam.enabled = false;
     }
 }
