@@ -219,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129863544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.25, z: 0.5}
+  m_LocalPosition: {x: 0.4, y: 0.25, z: 2.72}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1115676979}
@@ -241,7 +241,7 @@ MonoBehaviour:
   MoveCam: {fileID: 1115676977}
   BattleCam: {fileID: 1347380526}
   EnemySpot: {fileID: 1347380527}
-  attackerID: 0
+  attackerID: 1e+10
   charID: 1
   mana: 250
   hp: 250
@@ -2025,7 +2025,7 @@ PrefabInstance:
     - target: {fileID: 6729032278705462625, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.54937744
+      value: 0.5493164
       objectReference: {fileID: 0}
     - target: {fileID: 6729032279731495134, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
@@ -2040,12 +2040,12 @@ PrefabInstance:
     - target: {fileID: 6729032279987210221, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.299988
+      value: -10.300049
       objectReference: {fileID: 0}
     - target: {fileID: 6729032279585520743, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.11731
+      value: -8.1171875
       objectReference: {fileID: 0}
     - target: {fileID: 6729032278489363868, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
@@ -2135,6 +2135,16 @@ PrefabInstance:
     - target: {fileID: 6729032280169435282, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
       propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729032279233979945, guid: e9fcf3f7d4bddea4bb61a249200cb229,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729032280139291893, guid: e9fcf3f7d4bddea4bb61a249200cb229,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2459,7 +2469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 42.49, y: 31}
+  m_AnchoredPosition: {x: 42.490234, y: 31}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1524201670

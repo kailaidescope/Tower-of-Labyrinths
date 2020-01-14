@@ -98,6 +98,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         NewBattle();
+
     }
 
     public void NewBattle(){

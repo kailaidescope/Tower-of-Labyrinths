@@ -484,7 +484,7 @@ MonoBehaviour:
   coin: {fileID: 986171724393021642, guid: 588f1b1e64ba097499dc569dc95087e9, type: 3}
   chest: {fileID: 5952451796366702895, guid: 92ff4592f7f062b4c81fc312d0b34ac4, type: 3}
   exit: {fileID: 5574197589169746834, guid: a50175ac944a0d340a659fdc201d34bf, type: 3}
-  plane: {fileID: 0}
+  plane: {fileID: 386230954}
 --- !u!4 &193464601
 Transform:
   m_ObjectHideFlags: 0
@@ -3000,6 +3000,16 @@ PrefabInstance:
     - target: {fileID: 6729032280169435282, guid: e9fcf3f7d4bddea4bb61a249200cb229,
         type: 3}
       propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729032279233979945, guid: e9fcf3f7d4bddea4bb61a249200cb229,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729032280139291893, guid: e9fcf3f7d4bddea4bb61a249200cb229,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

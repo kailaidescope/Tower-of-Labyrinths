@@ -218,8 +218,9 @@ public class MazeGenerator : MonoBehaviour
                 if(choice == 1)obj = Instantiate(enemy1);
                 if(choice == 2)obj = Instantiate(enemy2);
                 else obj = Instantiate(enemy3);
-                obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
+                
                 obj.transform.parent = enemies.transform;
+                obj.transform.position = new Vector3(c.GetPos()[0], 0.5f, c.GetPos()[1]);
             }
             if (c.GetHasItem())
             {
@@ -259,6 +260,7 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 0f;
         GenerateGrid((int)size.x, (int)size.y);
         CarveGrid(cells[0, 0]);
         RemoveRandomWall();
@@ -267,6 +269,7 @@ public class MazeGenerator : MonoBehaviour
         plane.transform.position = new Vector3(size.x / 2, 0, size.y / 2);
 
         SpawnMaze();
+        Time.timeScale = 1f;
     }
 
     void Update()

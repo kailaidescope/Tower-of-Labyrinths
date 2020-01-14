@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 711, y: 474}
   m_MaxSize: {x: 18006, y: 14024}
   vertical: 0
-  controlID: 140
+  controlID: 2777
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 424}
   m_MaxSize: {x: 4002, y: 8024}
   vertical: 1
-  controlID: 55
+  controlID: 2757
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,8 +150,8 @@ MonoBehaviour:
     y: 0
     width: 732
     height: 466
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -192,9 +192,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.8602872, y: 12.765791, z: 17.649261}
+    m_Target: {x: 30.9592, y: -11.977456, z: 14.964889}
     speed: 2
-    m_Value: {x: -3.8602872, y: 12.765791, z: 17.649261}
+    m_Value: {x: 30.9592, y: -11.977456, z: 14.964889}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -222,13 +222,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.20647827, y: -0.73966, z: 0.26102874, w: -0.58492213}
+    m_Target: {x: -0.17637494, y: -0.5853816, z: 0.13227798, w: -0.78020686}
     speed: 2
-    m_Value: {x: -0.20647827, y: -0.73966, z: 0.26102874, w: -0.58492213}
+    m_Value: {x: -0.17637494, y: -0.5853816, z: 0.13227798, w: -0.78020686}
   m_Size:
-    m_Target: 1.6104145
+    m_Target: 40.010372
     speed: 2
-    m_Value: 1.6104145
+    m_Value: 40.010372
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 474}
   m_MaxSize: {x: 10004, y: 14024}
   vertical: 1
-  controlID: 99
+  controlID: 2778
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -518,7 +518,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8ed2ffffccd4ffffe4d4ffff1ad7ffff70d9fffff0dbffff26deffff64e0ffffa0e2ffffd6e4ffff4ee7ffff8ce9ffff06edffff52efffff8ef1fffff4f3ffff2af6ffffa4f9ffff
+      m_ExpandedIDs: 3afafeff58fbfeff5afbfeff78fcfeff96fdfeff98fdfeffccfffeffcefffeff7e01ffff9c02ffff9e02ffffda03fffff804fffffa04ffff3407ffff3607ffff7e08ffff9c09ffff9e09ffffda0afffff80bfffffa0bffff3c0dffff5c0effff5e0effff9e10ffffa010ffff0012ffff2013ffff2213ffff8e14ffff9c14ffffa414ffffca14ffffe014ffff1015ffff7015fffffe15ffff0016ffff3a18ffff6c1affffa81cffff3291ffffdeb1ffff14b4ffff5ab6ffff86b8ffffc4baffff26bdffffb0fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -607,20 +607,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: A:\kai turanski\Tower-of-Labyrinths\Maze Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 28}
-    m_SelectedIDs: b02f0000
-    m_LastClickedID: 12208
-    m_ExpandedIDs: 00000000242e0000402e00007c2e0000ca2e0000b02f0000e42f000000ca9a3b
+    scrollPos: {x: 0, y: 199}
+    m_SelectedIDs: fe290000
+    m_LastClickedID: 10750
+    m_ExpandedIDs: 000000003a2800005628000096280000ea280000d62900000e2a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -648,7 +648,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000242e0000402e00007c2e0000ca2e0000b02f0000e42f0000
+    m_ExpandedIDs: 000000003a2800005628000096280000ea280000d62900000e2a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -673,8 +673,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1e300000
-    m_LastClickedInstanceID: 12318
+    m_SelectedInstanceIDs: 94260000
+    m_LastClickedInstanceID: 9876
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -700,7 +700,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 372}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 194
 --- !u!114 &15

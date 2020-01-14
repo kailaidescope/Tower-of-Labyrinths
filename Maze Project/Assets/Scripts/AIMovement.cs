@@ -27,8 +27,8 @@ public class AIMovement : MonoBehaviour {
 
 
     void FixedUpdate() {
-        agent.destination = goal.position;
-        /*if (isFollowing)
+        //agent.destination = goal.position;
+        if (isFollowing)
         {
             if(Vector3.Distance(transform.position, goal.position) > followRadius)
             {
@@ -51,8 +51,8 @@ public class AIMovement : MonoBehaviour {
             }
 
             Vector3 pos = goal.gameObject.GetComponent<Rigidbody>().position;
-            float x = pos.x % 10;
-            float z = pos.z % 10;
+            float x = pos.x;
+            float z = pos.z;
             pos = new Vector3(x, 0, z);
             agent.destination = pos;
         }
@@ -62,6 +62,6 @@ public class AIMovement : MonoBehaviour {
             {
                 agent.isStopped = true;
             }
-        }*/
+        }
     }
 }
