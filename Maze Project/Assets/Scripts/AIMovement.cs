@@ -50,11 +50,7 @@ public class AIMovement : MonoBehaviour {
                 agent.isStopped = false; 
             }
 
-            Vector3 pos = goal.gameObject.GetComponent<Rigidbody>().position;
-            float x = pos.x;
-            float z = pos.z;
-            pos = new Vector3(x, 0, z);
-            agent.destination = pos;
+            agent.destination = goal.gameObject.GetComponent<Rigidbody>().position;
         }
         else
         {

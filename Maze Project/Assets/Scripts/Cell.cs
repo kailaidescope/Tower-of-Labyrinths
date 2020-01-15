@@ -21,14 +21,14 @@ public class Cell
         around = new Cell[4];
         visited = false;
         hasChest = false;
-        enemyChance = 0.05f;
+        enemyChance = 0.1f;
         itemChance = 0.1f;
         x = a;
         z = b;
 
         //float dist = Mathf.Sqrt(Mathf.Pow(a,2) + Mathf.Pow(b,2));
         float rand = Random.Range(0f, 1f);
-        if (rand < enemyChance && x > 3f && z > 3f)
+        if (rand < enemyChance && x > 2f && z > 2f)
         {
             hasEnemy = true;
         }

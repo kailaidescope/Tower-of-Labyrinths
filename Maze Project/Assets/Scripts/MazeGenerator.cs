@@ -215,8 +215,8 @@ public class MazeGenerator : MonoBehaviour
                 int choice = UnityEngine.Random.Range(0,4);
                 GameObject obj = null;
                 if(choice == 0)obj = Instantiate(enemy0);
-                if(choice == 1)obj = Instantiate(enemy1);
-                if(choice == 2)obj = Instantiate(enemy2);
+                else if(choice == 1)obj = Instantiate(enemy1);
+                else if(choice == 2)obj = Instantiate(enemy2);
                 else obj = Instantiate(enemy3);
                 
                 obj.transform.parent = enemies.transform;
@@ -258,7 +258,7 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         Time.timeScale = 0f;
         GenerateGrid((int)size.x, (int)size.y);
