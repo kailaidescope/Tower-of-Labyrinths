@@ -548,7 +548,7 @@ MonoBehaviour:
   magicPower: 1
   defense: 1.2
   attackID:
-  - 13
+  - 25
   - 17
   - 7
   - 2

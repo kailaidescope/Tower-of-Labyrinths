@@ -18,7 +18,6 @@ public class ExitBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
-            Time.timeScale = 0f;
             menu.SetActive(true);
         }
     }
