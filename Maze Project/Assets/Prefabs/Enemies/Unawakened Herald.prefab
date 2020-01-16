@@ -127,8 +127,8 @@ MonoBehaviour:
   - 13
   - 16
   enemyID: 17
-  detectRadius: 5
-  followRadius: 10
+  detectRadius: 0
+  followRadius: 0
 --- !u!195 &6994537580658567132
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -4815,7 +4815,7 @@ MonoBehaviour:
   abilityMagnitude:
   - 0
   - 20
-  - 10
+  - 30
   - 40
   - 0.2
   - 30

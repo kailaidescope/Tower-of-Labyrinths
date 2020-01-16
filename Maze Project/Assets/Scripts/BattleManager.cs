@@ -229,6 +229,10 @@ public class BattleManager : MonoBehaviour
         Debug.Log("UBFEKGYV");
         Outcome.gameObject.SetActive(true);
         rOutcome.SetText(characterNames[(int)cID] + " defeated " + enemyNames[(int)eID] + "!");
+        if((int)eID == 17 || (int)eID == 18 || (int)eID == 19 || (int)eID == 20){
+            Time.timeScale = 1f;
+            SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+        }
         BattleCam.gameObject.SetActive(false);
         MoveCam.gameObject.SetActive(true);
         BattleCam.enabled = false;

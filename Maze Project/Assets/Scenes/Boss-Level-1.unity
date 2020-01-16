@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 15, y: 15}
-  wall: {fileID: 5815119790934324543, guid: a32486f45b193294b9ad0f947f8dd8d1, type: 3}
+  wall: {fileID: 5815119790934324543, guid: 6272b3bbf5f1da64ba88be8a8391ea63, type: 3}
   corner: {fileID: 5815119790934324543, guid: 6a7585f3d43f33e48834f32f9ce4d8b9, type: 3}
   enemy0: {fileID: 1285047879729472941, guid: b4afef7ba7dc96d43a05271ab25cd50b, type: 3}
   enemy1: {fileID: 1601669626790989404, guid: e5c9bcd25fb99e34f8d0175b5547313c, type: 3}
@@ -229,7 +229,7 @@ MonoBehaviour:
   enemy3: {fileID: 4546959406158802606, guid: ca7ca9cab2825ae4d95f079cea4f7b51, type: 3}
   coin: {fileID: 986171724393021642, guid: 588f1b1e64ba097499dc569dc95087e9, type: 3}
   chest: {fileID: 5952451796366702895, guid: 92ff4592f7f062b4c81fc312d0b34ac4, type: 3}
-  exit: {fileID: 5574197589169746834, guid: a50175ac944a0d340a659fdc201d34bf, type: 3}
+  exit: {fileID: 7091247861641358615, guid: 1f39db3721e885148a255e01fe1cd82e, type: 3}
   plane: {fileID: 546768251}
 --- !u!4 &58675583
 Transform:
@@ -1744,7 +1744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1102207143
 RectTransform:
   m_ObjectHideFlags: 0
