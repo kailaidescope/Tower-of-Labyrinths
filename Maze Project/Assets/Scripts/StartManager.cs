@@ -16,9 +16,12 @@ public class StartManager : MonoBehaviour
         
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("Start");
+    }
     public void GameStart(){
-        SceneManager.LoadScene("Level-1");
-        Time.timeScale = 1f;
+        SceneManager.LoadScene("Boss-Level-1");
     }
     public void QuitGame()
     {
